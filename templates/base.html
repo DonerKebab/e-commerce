@@ -122,15 +122,15 @@
                       <ul class="nav navbar-nav{% if request.get_full_path == home_url %} no-border{% endif %}" >
                         {% for category in categories %}
                             <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                              <a class="nav-link" role="button"
                               aria-haspopup="true" id="{{category}}" aria-expanded="false" href="{{ category.get_absolute_url }}">
                                   {{ category }}
                               </a>
-                              <div class="dropdown-menu" aria-labelledby="{{category}}">
+                              <!-- <div class="dropdown-menu" aria-labelledby="{{category}}">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
-                              </div>
+                              </div> -->
                             </li>
                         {% endfor %}
                       </ul>
