@@ -7,6 +7,7 @@ import dj_database_url
 import dj_email_url
 from django.contrib.messages import constants as messages
 import django_cache_url
+from django.utils.translation import ugettext_lazy as _
 
 
 DEBUG = ast.literal_eval(os.environ.get('DEBUG', 'True'))
@@ -38,8 +39,11 @@ DATABASES = {
         conn_max_age=600)}
 
 
-TIME_ZONE = 'America/Chicago'
-LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'Asia/Ho_Chi_Minh'
+LANGUAGE_CODE = 'vi'
+LANGUAGES = [
+    ('vi', _('Vietnamese')),
+]
 LOCALE_PATHS = [os.path.join(PROJECT_ROOT, 'locale')]
 USE_I18N = True
 USE_L10N = True
