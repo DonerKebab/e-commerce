@@ -67,6 +67,8 @@ class Category(MPTTModel):
     def set_hidden_descendants(self, hidden):
         self.get_descendants().update(hidden=hidden)
 
+    def get_visible_children_category(self):
+        return self.get_children().filter(hidden=False)
 
 @python_2_unicode_compatible
 class ProductClass(models.Model):
