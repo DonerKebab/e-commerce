@@ -753,7 +753,7 @@ msgstr ""
 #: saleor/product/models.py:32
 msgctxt "Category field"
 msgid "name"
-msgstr ""
+msgstr "Tên"
 
 #: saleor/product/models.py:34
 msgctxt "Category field"
@@ -763,7 +763,7 @@ msgstr ""
 #: saleor/product/models.py:36
 msgctxt "Category field"
 msgid "description"
-msgstr ""
+msgstr "Mô tả"
 
 #: saleor/product/models.py:39
 msgctxt "Category field"
@@ -779,6 +779,16 @@ msgstr ""
 msgctxt "Category model"
 msgid "category"
 msgstr ""
+
+#: saleor/product/models.py:44
+msgctxt "Category field"
+msgid "seo keyword"
+msgstr "Từ khóa seo"
+
+#: saleor/product/models.py:49
+msgctxt "Category field"
+msgid "seo description"
+msgstr "Miêu tả trang ( seo )"
 
 #: saleor/product/models.py:48
 msgctxt "Category model"
@@ -864,6 +874,11 @@ msgstr "Chỉnh sửa"
 msgctxt "Product field"
 msgid "is featured"
 msgstr "hiện ở trang chủ"
+
+#: saleor/product/models.py:134
+msgctxt "Product field"
+msgid "seo keyword"
+msgstr "Từ khóa Seo"
 
 #: saleor/product/models.py:145
 msgctxt "Product model"
