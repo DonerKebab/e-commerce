@@ -133,6 +133,12 @@
                   </div>
                 {% endfor %}
                 <div class="row">
+                  {{ product_form.seo_keyword|materializecss }}
+                </div>
+                <div class="row">
+                  {{ product_form.seo_description|materializecss }}
+                </div>
+                <div class="row">
                   {{ product_form.description|materializecss }}
                 </div>
               </div>
@@ -385,8 +391,8 @@
                   <div class="row">
                     <div class="card">
                       <div class="card-image product-gallery-item-image">
-                        <img class="responsive-img" 
-                             src="{{ image.image.crop.255x255 }}" 
+                        <img class="responsive-img"
+                             src="{{ image.image.crop.255x255 }}"
                              srcset="{{ image.image.crop.255x255 }} 1x, {{ image.image.crop.510x510 }} 2x"
                              alt="">
                       </div>

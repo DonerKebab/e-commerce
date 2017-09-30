@@ -156,6 +156,7 @@ def product_json_ld(product, availability=None, attributes=None):
 def get_variant_picker_data(product, discounts=None, local_currency=None):
     availability = get_availability(product, discounts, local_currency)
     variants = product.variants.all()
+    # fix variant pick here
     data = {'variantAttributes': [], 'variants': []}
 
     variant_attributes = product.product_class.variant_attributes.all()

@@ -40,6 +40,14 @@ class Category(MPTTModel):
     hidden = models.BooleanField(
         pgettext_lazy('Category field', 'hidden'), default=False)
 
+    seo_keyword = models.CharField(
+        pgettext_lazy('Category field', 'seo keyword'),
+        max_length=128, blank=True, null=True)
+
+    seo_description = models.CharField(
+        pgettext_lazy('Category field', 'seo description'),
+        max_length=128, blank=True, null=True)
+
     objects = models.Manager()
     tree = TreeManager()
 
@@ -134,6 +142,14 @@ class Product(models.Model, ItemRange, index.Indexed):
         pgettext_lazy('Product field', 'updated at'), auto_now=True, null=True)
     is_featured = models.BooleanField(
         pgettext_lazy('Product field', 'is featured'), default=False)
+
+    seo_keyword = models.CharField(
+        pgettext_lazy('Product field', 'seo keyword'),
+        max_length=128, blank=True, null=True)
+
+    seo_description = models.CharField(
+        pgettext_lazy('Product field', 'seo description'),
+        max_length=128, blank=True, null=True)
 
     objects = ProductManager()
 

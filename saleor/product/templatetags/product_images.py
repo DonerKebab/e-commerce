@@ -73,3 +73,13 @@ def product_first_image(product, size, method='crop'):
     all_images = product.images.all()
     main_image = all_images[0].image if all_images else None
     return get_thumbnail(main_image, size, method)
+
+@register.simple_tag()
+def product_first_image_alt(product):
+    """
+    Returns main product image alt for seo
+    """
+    all_images = product.images.all()
+    alt_text =all_images[0].alt if all_images else ''
+
+    return alt_text
