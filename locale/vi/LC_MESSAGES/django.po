@@ -1687,7 +1687,7 @@ msgstr ""
 #: templates/dashboard/order/detail.html:373
 msgctxt "Order subtotal"
 msgid "Subtotal"
-msgstr ""
+msgstr "Tổng"
 
 #: templates/cart-dropdown.html:35
 msgctxt "Cart dropdown text"
@@ -1697,12 +1697,12 @@ msgstr ""
 #: templates/cart-dropdown.html:45
 msgctxt "Cart dropdown secondary action"
 msgid "Go to cart"
-msgstr ""
+msgstr "Tới giỏ hàng"
 
 #: templates/cart-dropdown.html:48
 msgctxt "Cart dropdown primary action"
 msgid "Checkout"
-msgstr ""
+msgstr "Thanh toán"
 
 #: templates/cart-dropdown.html:53 templates/cart/index.html:126
 msgctxt "Empty cart message"
@@ -1732,7 +1732,7 @@ msgstr ""
 #: templates/cart/index.html:27
 msgctxt "Cart table header"
 msgid "Product"
-msgstr ""
+msgstr "Sản phẩm"
 
 #: templates/cart/index.html:30
 msgctxt "Cart table header"
@@ -1742,7 +1742,7 @@ msgstr "Số lượng"
 #: templates/cart/index.html:33
 msgctxt "Cart table header"
 msgid "Price"
-msgstr ""
+msgstr "Giá tiền"
 
 #: templates/cart/index.html:75
 msgctxt "Cart totals help text"
@@ -1752,7 +1752,7 @@ msgstr ""
 #: templates/cart/index.html:98
 msgctxt "Cart primary action"
 msgid "Checkout"
-msgstr ""
+msgstr "Thanh toán"
 
 #: templates/cart/index.html:103
 msgctxt "Cart secondary title"
@@ -1783,7 +1783,7 @@ msgstr ""
 #: templates/checkout/details.html:34
 msgctxt "Order review title"
 msgid "Order review"
-msgstr ""
+msgstr "Thông tin đơn hàng"
 
 #: templates/checkout/details.html:50
 msgctxt "Order review section"
