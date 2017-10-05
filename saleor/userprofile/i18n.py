@@ -53,37 +53,38 @@ class AddressMetaForm(forms.ModelForm):
 
 class AddressForm(forms.ModelForm):
 
-    AUTOCOMPLETE_MAPPING = (
-        ('first_name', 'given-name'),
-        ('last_name', 'family-name'),
-        ('company_name', 'organization'),
-        ('street_address_1', 'address-line1'),
-        ('street_address_2', 'address-line2'),
-        ('city', 'address-level2'),
-        ('postal_code', 'postal-code'),
-        ('country_area', 'address-level1'),
-        ('country', 'country'),
-        ('city_area', 'address-level3'),
-        ('phone', 'tel'),
-        ('email', 'email')
-    )
+    # AUTOCOMPLETE_MAPPING = (
+    #     ('first_name', 'given-name'),
+    #     ('last_name', 'family-name'),
+    #     ('company_name', 'organization'),
+    #     ('street_address_1', 'address-line1'),
+    #     ('street_address_2', 'address-line2'),
+    #     ('city', 'address-level2'),
+    #     ('postal_code', 'postal-code'),
+    #     ('country_area', 'address-level1'),
+    #     ('country', 'country'),
+    #     ('city_area', 'address-level3'),
+    #     ('phone', 'tel'),
+    #     ('email', 'email')
+    # )
 
     class Meta:
         model = Address
-        exclude = []
+        exclude = ['company_name', 'street_address_2', 'city', 'postal_code',
+         'country_area', 'country', 'city_area']
 
-    def __init__(self, *args, **kwargs):
-        autocomplete_type = kwargs.pop('autocomplete_type', None)
-        super(AddressForm, self).__init__(*args, **kwargs)
-        autocomplete_dict = defaultdict(
-            lambda: 'off', self.AUTOCOMPLETE_MAPPING)
-        for field_name, field in self.fields.items():
-            if autocomplete_type:
-                autocomplete = '%s %s' % (
-                    autocomplete_type, autocomplete_dict[field_name])
-            else:
-                autocomplete = autocomplete_dict[field_name]
-            field.widget.attrs['autocomplete'] = autocomplete
+    # def __init__(self, *args, **kwargs):
+    #     autocomplete_type = kwargs.pop('autocomplete_type', None)
+    #     super(AddressForm, self).__init__(*args, **kwargs)
+    #     autocomplete_dict = defaultdict(
+    #         lambda: 'off', self.AUTOCOMPLETE_MAPPING)
+    #     for field_name, field in self.fields.items():
+    #         if autocomplete_type:
+    #             autocomplete = '%s %s' % (
+    #                 autocomplete_type, autocomplete_dict[field_name])
+    #         else:
+    #             autocomplete = autocomplete_dict[field_name]
+    #         field.widget.attrs['autocomplete'] = autocomplete
 
 
 class CountryAwareAddressForm(AddressForm):
@@ -129,6 +130,7 @@ class CountryAwareAddressForm(AddressForm):
         return data
 
     def clean(self):
+        print('submitted, validate')
         data = super(CountryAwareAddressForm, self).clean()
         return self.validate_address(data)
 

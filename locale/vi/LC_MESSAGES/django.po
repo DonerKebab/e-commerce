@@ -186,7 +186,7 @@ msgstr ""
 #: saleor/checkout/forms.py:41
 msgctxt "Billing addresses form choice"
 msgid "Enter a new address"
-msgstr ""
+msgstr "Nhập địa chỉ khác"
 
 #: saleor/checkout/forms.py:43
 msgctxt "Billing addresses form choice"
@@ -1261,22 +1261,22 @@ msgstr ""
 #: saleor/userprofile/models.py:36
 msgctxt "Address field"
 msgid "given name"
-msgstr ""
+msgstr "Họ và tên đệm"
 
 #: saleor/userprofile/models.py:39
 msgctxt "Address field"
 msgid "family name"
-msgstr ""
+msgstr "Tên"
 
 #: saleor/userprofile/models.py:42
 msgctxt "Address field"
 msgid "company or organization"
-msgstr ""
+msgstr "công ti hoặc tổ chức"
 
 #: saleor/userprofile/models.py:45 saleor/userprofile/models.py:48
 msgctxt "Address field"
 msgid "address"
-msgstr ""
+msgstr "Địa chỉ"
 
 #: saleor/userprofile/models.py:51
 msgctxt "Address field"
@@ -1306,12 +1306,12 @@ msgstr ""
 #: saleor/userprofile/models.py:65
 msgctxt "Address field"
 msgid "phone number"
-msgstr ""
+msgstr "Số điện thoại"
 
 #: saleor/userprofile/models.py:74
 msgctxt "Address model"
 msgid "address"
-msgstr ""
+msgstr "Địa chỉ"
 
 #: saleor/userprofile/models.py:75
 msgctxt "Address model"
@@ -1440,22 +1440,22 @@ msgstr ""
 #: templates/account/login.html:5
 msgctxt "Login page title"
 msgid "Log in"
-msgstr ""
+msgstr "Đăng nhập"
 
 #: templates/account/login.html:13
 msgctxt "Login form secondary title"
 msgid "Don't have an account yet?"
-msgstr ""
+msgstr "Bạn chưa có tài khoản?"
 
 #: templates/account/login.html:17
 msgctxt "Login form secondary action"
 msgid "Register"
-msgstr ""
+msgstr "Đăng kí"
 
 #: templates/account/login.html:22
 msgctxt "Login form title"
 msgid "Log in"
-msgstr ""
+msgstr "Đăng nhập"
 
 #: templates/account/partials/already_logged_in.html:7
 #, python-format
@@ -1466,12 +1466,12 @@ msgstr ""
 #: templates/account/partials/login_form.html:17
 msgctxt "Login form primary action"
 msgid "Log in"
-msgstr ""
+msgstr "Đăng nhập"
 
 #: templates/account/partials/login_form.html:20
 msgctxt "Login form secondary link"
 msgid "Forgot password?"
-msgstr ""
+msgstr "Quên mật khẩu"
 
 #: templates/account/partials/login_form.html:29
 msgid "Facebook"
@@ -1487,24 +1487,24 @@ msgstr ""
 #: templates/userprofile/details.html:14
 msgctxt "Main navigation item"
 msgid "Home"
-msgstr ""
+msgstr "Trang chủ"
 
 #: templates/account/password_change.html:8 templates/base.html:48
 #: templates/base.html:197 templates/order/details.html:19
 #: templates/order/payment.html:22 templates/userprofile/details.html:16
 msgctxt "Main navigation item"
 msgid "Your account"
-msgstr ""
+msgstr "Tài khoản"
 
 #: templates/account/password_change.html:9
 msgctxt "Password change breadcrumb"
 msgid "Edit"
-msgstr ""
+msgstr "Thay đổi"
 
 #: templates/account/password_change.html:22
 msgctxt "Password change form legend"
 msgid "Change Password"
-msgstr ""
+msgstr "Đổi mật khẩu"
 
 #: templates/account/password_change.html:28
 msgctxt "Password change form primary action"
@@ -1553,7 +1553,7 @@ msgstr ""
 #: templates/account/password_reset_from_key.html:6
 msgctxt "Password reset from key page title"
 msgid "Change Password"
-msgstr ""
+msgstr "Đổi mật khẩu"
 
 #: templates/account/password_reset_from_key.html:11
 msgid "Bad Token"
@@ -1657,7 +1657,7 @@ msgstr "Đăng xuất"
 #: templates/base.html:57 templates/base.html:207
 msgctxt "Main navigation item"
 msgid "Register"
-msgstr ""
+msgstr "Đăng kí"
 
 #: templates/base.html:61 templates/base.html:212
 msgctxt "Main navigation item"
@@ -1697,7 +1697,7 @@ msgstr ""
 #: templates/cart-dropdown.html:45
 msgctxt "Cart dropdown secondary action"
 msgid "Go to cart"
-msgstr "Tới giỏ hàng"
+msgstr "Giỏ hàng"
 
 #: templates/cart-dropdown.html:48
 msgctxt "Cart dropdown primary action"
@@ -1722,12 +1722,12 @@ msgstr "Giỏ hàng"
 #: templates/cart/index.html:13
 msgctxt "Cart breadcrumb"
 msgid "Cart"
-msgstr ""
+msgstr "Giỏ hàng"
 
 #: templates/cart/index.html:19
 msgctxt "Cart message"
 msgid "Product has been deleted from cart"
-msgstr ""
+msgstr "Sản phẩm đã bị xóa khỏi giỏ hàng"
 
 #: templates/cart/index.html:27
 msgctxt "Cart table header"
@@ -1768,17 +1768,17 @@ msgstr ""
 #: templates/checkout/details.html:7
 msgctxt "Checkout page title"
 msgid "Checkout"
-msgstr ""
+msgstr "Thanh toán"
 
 #: templates/checkout/details.html:11
 msgctxt "Checkout top message"
 msgid "Easy and secure!"
-msgstr ""
+msgstr "Đơn giản và bảo mật"
 
 #: templates/checkout/details.html:18
 msgctxt "Checkout title"
 msgid "Checkout"
-msgstr ""
+msgstr "Thanh toán  "
 
 #: templates/checkout/details.html:34
 msgctxt "Order review title"
@@ -1798,7 +1798,7 @@ msgstr ""
 #: templates/checkout/details.html:68
 msgctxt "Order review section title"
 msgid "Total"
-msgstr ""
+msgstr "Tổng"
 
 #: templates/checkout/login.html:5
 msgctxt "Checkout login page title"
@@ -1833,7 +1833,7 @@ msgstr ""
 #: templates/checkout/payment.html:13
 msgctxt "Checkout payment primary action"
 msgid "Place order"
-msgstr ""
+msgstr "Đặt hàng"
 
 #: templates/checkout/shipping_address.html:8
 #: templates/checkout/shipping_method.html:7
@@ -1892,7 +1892,7 @@ msgstr ""
 #: templates/checkout/summary.html:7
 msgctxt "Checkout summary title"
 msgid "Billing address"
-msgstr ""
+msgstr "Địa chỉ giao hàng"
 
 #: templates/checkout/summary.html:11
 msgctxt "Checkout summary primary action"
@@ -1902,7 +1902,7 @@ msgstr ""
 #: templates/checkout/summary_without_shipping.html:8
 msgctxt "Checkout summary without shipping title"
 msgid "Billing address"
-msgstr ""
+msgstr "Địa chỉ giao hàng"
 
 #: templates/checkout/summary_without_shipping.html:17
 msgctxt "Checkout summary without shipping action"
@@ -2275,7 +2275,7 @@ msgstr ""
 #: templates/dashboard/customer/detail.html:60
 msgctxt "Customer orders table header"
 msgid "Total"
-msgstr ""
+msgstr "Tổng"
 
 #: templates/dashboard/customer/detail.html:87
 msgctxt "Empty customer orders table message"
@@ -2515,7 +2515,7 @@ msgstr ""
 #: templates/dashboard/includes/_orders_table.html:25
 msgctxt "Orders table header"
 msgid "Total"
-msgstr ""
+msgstr "Tổng"
 
 #: templates/dashboard/includes/_orders_table.html:41
 #: templates/dashboard/order/detail.html:106
@@ -2545,17 +2545,12 @@ msgstr ""
 #: templates/dashboard/index.html:24
 msgctxt "Preauthorized payments table header"
 msgid "Order"
-msgstr ""
+msgstr "Đơn hàng"
 
 #: templates/dashboard/index.html:27
 msgctxt "Preauthorized payments table header"
 msgid "Date"
-msgstr ""
-
-#: templates/dashboard/index.html:30
-msgctxt "Preauthorized payments table header"
-msgid "Customer"
-msgstr ""
+msgstr "Ngày đặt"
 
 #: templates/dashboard/index.html:33
 msgctxt "Preauthorized payments table header"
@@ -2733,7 +2728,7 @@ msgstr "Số lượng"
 #: templates/dashboard/order/detail.html:268
 msgctxt "Shipment group table header"
 msgid "Total"
-msgstr ""
+msgstr "Tổng"
 
 #: templates/dashboard/order/detail.html:276
 #, python-format
@@ -2955,7 +2950,7 @@ msgstr "Số lượng"
 #: templates/dashboard/order/modal_cancel_line.html:33
 msgctxt "Modal remove order line table header"
 msgid "Total"
-msgstr ""
+msgstr "Tổng"
 
 #: templates/dashboard/order/modal_cancel_line.html:60
 msgctxt "Dashboard remove action"
@@ -3579,7 +3574,7 @@ msgstr ""
 #, python-format
 msgctxt "Dashboard order"
 msgid "Order #%(order_number)s"
-msgstr ""
+msgstr "Đơn hàng #%(order_number)s"
 
 #: templates/dashboard/search/results.html:64
 #, python-format
@@ -3802,19 +3797,19 @@ msgstr ""
 #, python-format
 msgctxt "Order details page title"
 msgid "Order %(order)s"
-msgstr ""
+msgstr "Đơn hàng %(order)s"
 
 #: templates/order/details.html:22
 #, python-format
 msgctxt "Order details breadcrumb"
 msgid "Order %(order)s"
-msgstr ""
+msgstr "Đơn hàng %(order)s"
 
 #: templates/order/details.html:38
 #, python-format
 msgctxt "Order detail text"
 msgid "Order %(order)s: %(order_status)s"
-msgstr ""
+msgstr "Đơn hàng %(order)s: %(order_status)s"
 
 #: templates/order/details.html:45
 msgctxt "Order details link text"
@@ -3852,22 +3847,22 @@ msgstr ""
 #: templates/order/order-details.html:21
 msgctxt "Order details address title"
 msgid "Billing address"
-msgstr ""
+msgstr "Địa chỉ giao hàng"
 
 #: templates/order/order-details.html:32
 msgctxt "Order details column title"
 msgid "Product"
-msgstr ""
+msgstr "Sản phẩm"
 
 #: templates/order/order-details.html:37
 msgctxt "Order details column title"
-msgid "Số lượng"
-msgstr ""
+msgid "Quantity"
+msgstr "Số lượng"
 
 #: templates/order/order-details.html:42
 msgctxt "Order details column title"
 msgid "Price"
-msgstr ""
+msgstr "Đơn giá"
 
 #: templates/order/order-details.html:76
 #, python-format
@@ -3884,13 +3879,13 @@ msgstr ""
 #: templates/order/order-details.html:107
 msgctxt "Order details total text"
 msgid "Total"
-msgstr ""
+msgstr "Tổng"
 
 #: templates/order/payment.html:10
 #, python-format
 msgctxt "Payment details page title"
 msgid "Pay for order %(order)s"
-msgstr ""
+msgstr "Thanh toán cho đơn hàng %(order)s"
 
 #: templates/order/payment.html:25
 #, python-format
@@ -3924,6 +3919,11 @@ msgid ""
 "the previous transaction succeeds you might end up being charged twice."
 msgstr ""
 
+#: templates/order/payment.html:37
+msgctxt "Payment pending text"
+msgid "Thank you for your order."
+msgstr "Cảm ơn bạn đã đặt hàng."
+
 #: templates/order/payment.html:63
 msgctxt "Payment pending action"
 msgid "I understand, allow me to pay again"
@@ -3934,6 +3934,18 @@ msgstr ""
 msgctxt "Payment details title"
 msgid "Pay for order %(order)s"
 msgstr ""
+
+#: templates/order/payment.html:42
+#, python-format
+msgctxt "Payment pending text"
+msgid "Your order <strong> %(order)s </strong> has been accepted."
+msgstr "Đơn hàng  <strong> %(order)s </strong> của bạn đã được đặt hàng thành công."
+
+#: templates/order/payment.html:45
+msgctxt "Payment pending text"
+msgid "Our employee will contact you soon to confirm your order."
+msgstr "Nhân viên Siêu thị tiện ích 247 sẽ liên lạc với bạn để xác nhận đơn hàng."
+
 
 #: templates/order/payment.html:77
 msgctxt "Payment details primary action"
@@ -4022,7 +4034,7 @@ msgctxt "Product details link text"
 msgid "Edit in dashboard"
 msgstr ""
 
-#: templates/product/details.html:125
+#: templates/product/details.html:128
 msgctxt "Product details primary action"
 msgid "Add to cart"
 msgstr "Thêm vào giỏ hàng"
@@ -4069,22 +4081,22 @@ msgstr ""
 #: templates/userprofile/address-edit.html:9
 msgctxt "New address page title"
 msgid "New address"
-msgstr ""
+msgstr "Địa chỉ giao hàng mới"
 
 #: templates/userprofile/address-edit.html:18
 msgctxt "Edit/new address breadcrumb"
 msgid "Your profile"
-msgstr ""
+msgstr "Thông tin cá nhân"
 
 #: templates/userprofile/address-edit.html:22
 msgctxt "Edit address breadcrumb"
 msgid "Edit address"
-msgstr ""
+msgstr "Thay đổi địa chỉ"
 
 #: templates/userprofile/address-edit.html:26
 msgctxt "New address breadcrumb"
 msgid "New address"
-msgstr ""
+msgstr "Địa chỉ giao hàng mới"
 
 #: templates/userprofile/address-edit.html:39
 msgctxt "Edit address title"
@@ -4094,41 +4106,41 @@ msgstr ""
 #: templates/userprofile/address-edit.html:41
 msgctxt "New address title"
 msgid "New address"
-msgstr ""
+msgstr "Địa chỉ giao hàng mới"
 
 #: templates/userprofile/address-edit.html:49
 msgctxt "Edit/new address primary action"
 msgid "Save changes"
-msgstr ""
+msgstr "Lưu thay đổi"
 
 #: templates/userprofile/details.html:9
 msgctxt "User profile page title"
 msgid "Your profile"
-msgstr ""
+msgstr "Thông tin cá nhân"
 
 #: templates/userprofile/details.html:23
 msgid "My account"
-msgstr ""
+msgstr "Thông tin tài khoản"
 
 #: templates/userprofile/details.html:27
 msgctxt "User profile tab"
 msgid "Recent Orders"
-msgstr ""
+msgstr "Đơn hàng gần đây"
 
 #: templates/userprofile/details.html:33
 msgctxt "User profile tab"
 msgid "Change password"
-msgstr ""
+msgstr "Đổi mật khẩu"
 
 #: templates/userprofile/details.html:39
 msgctxt "User profile tab"
 msgid "Addresses book"
-msgstr ""
+msgstr "Địa chỉ giao hàng"
 
 #: templates/userprofile/details.html:51
 msgctxt "Recent orders column title"
 msgid "Order"
-msgstr ""
+msgstr "Đơn hàng"
 
 #: templates/userprofile/details.html:54
 msgctxt "Recent orders column title"
@@ -4138,17 +4150,17 @@ msgstr ""
 #: templates/userprofile/details.html:57
 msgctxt "Recent orders column title"
 msgid "Summary"
-msgstr ""
+msgstr "Tổng"
 
 #: templates/userprofile/details.html:60
 msgctxt "Recent orders column title"
 msgid "Status"
-msgstr ""
+msgstr "Trạng thái"
 
 #: templates/userprofile/details.html:82
 msgctxt "Recent orders link text"
 msgid "Details"
-msgstr ""
+msgstr "Chi tiết"
 
 #: templates/userprofile/details.html:90
 msgctxt "No recent orders text"
@@ -4158,14 +4170,14 @@ msgstr ""
 #: templates/userprofile/details.html:102
 msgctxt "User profile action"
 msgid "Change password"
-msgstr ""
+msgstr "Đổi mật khẩu"
 
 #: templates/userprofile/details.html:116
 msgctxt "User address action"
 msgid "Edit"
-msgstr ""
+msgstr "Thay đổi"
 
 #: templates/userprofile/details.html:127
 msgctxt "No addresses text"
 msgid "You will see new addresses here after first successful checkout."
-msgstr ""
+msgstr "Bạn sẽ thấy địa chỉ giao hàng ở đây sau lần thanh toán đầu tiên."
