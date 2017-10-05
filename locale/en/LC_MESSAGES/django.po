@@ -1818,7 +1818,7 @@ msgstr ""
 #: templates/checkout/payment.html:13
 msgctxt "Checkout payment primary action"
 msgid "Place order"
-msgstr ""
+msgstr "Đặt hàng"
 
 #: templates/checkout/shipping_address.html:8
 #: templates/checkout/shipping_method.html:7
@@ -1877,7 +1877,7 @@ msgstr ""
 #: templates/checkout/summary.html:7
 msgctxt "Checkout summary title"
 msgid "Billing address"
-msgstr ""
+msgstr "Địa chỉ nhận hàng"
 
 #: templates/checkout/summary.html:11
 msgctxt "Checkout summary primary action"
@@ -1887,7 +1887,7 @@ msgstr ""
 #: templates/checkout/summary_without_shipping.html:8
 msgctxt "Checkout summary without shipping title"
 msgid "Billing address"
-msgstr ""
+msgstr "Địa chỉ nhận hàng"
 
 #: templates/checkout/summary_without_shipping.html:17
 msgctxt "Checkout summary without shipping action"
@@ -2601,7 +2601,7 @@ msgstr ""
 #: templates/dashboard/order/detail.html:226
 msgctxt ""
 msgid "Billing address"
-msgstr ""
+msgstr "Địa chỉ nhận hàng"
 
 #: templates/dashboard/order/detail.html:32
 msgctxt "Order detail action"
@@ -3837,7 +3837,7 @@ msgstr ""
 #: templates/order/order-details.html:21
 msgctxt "Order details address title"
 msgid "Billing address"
-msgstr ""
+msgstr "Địa chỉ nhận hàng"
 
 #: templates/order/order-details.html:32
 msgctxt "Order details column title"
@@ -4093,17 +4093,17 @@ msgstr ""
 
 #: templates/userprofile/details.html:23
 msgid "My account"
-msgstr ""
+msgstr "Thông tin tài khoản"
 
 #: templates/userprofile/details.html:27
 msgctxt "User profile tab"
 msgid "Recent Orders"
-msgstr ""
+msgstr "Đặt hàng gần đây"
 
 #: templates/userprofile/details.html:33
 msgctxt "User profile tab"
 msgid "Change password"
-msgstr ""
+msgstr "Thao đổi mật khẩu"
 
 #: templates/userprofile/details.html:39
 msgctxt "User profile tab"
