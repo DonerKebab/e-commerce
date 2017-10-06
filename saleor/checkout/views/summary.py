@@ -91,8 +91,11 @@ def summary_with_shipping_view(request, checkout):
 
 
 def anonymous_summary_without_shipping(request, checkout):
+    print(request.method)
+    print('anonymous_summary_without_shipping')
     user_form = AnonymousUserBillingForm(
         request.POST or None, initial={'email': checkout.email})
+    print(user_form)
     billing_address = checkout.billing_address
     if billing_address:
         address_form, preview = get_address_form(
@@ -102,6 +105,7 @@ def anonymous_summary_without_shipping(request, checkout):
         address_form, preview = get_address_form(
             request.POST or None, country_code=request.country.code,
             autocomplete_type='billing', initial={'country': request.country})
+        # print(address_form, preview)
     if all([user_form.is_valid(), address_form.is_valid()]) and not preview:
         checkout.email = user_form.cleaned_data['email']
         checkout.billing_address = address_form.instance

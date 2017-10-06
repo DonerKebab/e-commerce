@@ -10,8 +10,8 @@
       <div class="row item">
         <div class="col-md-10">
           <a class="link--clean" href="{{ line.variant_url }}">
-            <img class="cart-dropdown__image" src="{% get_thumbnail line.image size="60x60" %}" 
-                 srcset="{% get_thumbnail line.image size="60x60" %} 1x, {% get_thumbnail line.image size="120x120" %} 2x" 
+            <img class="cart-dropdown__image" src="{% get_thumbnail line.image size="60x60" %}"
+                 srcset="{% get_thumbnail line.image size="60x60" %} 1x, {% get_thumbnail line.image size="120x120" %} 2x"
                  alt="">
             <h3>
               {{ line.product }}
@@ -32,7 +32,7 @@
       <div class="col-md-8">
         <h3>{% trans "Subtotal" context "Order subtotal" %}
             <br>
-            <span>{% trans "(Delivery calculated at checkout)" context "Cart dropdown text" %}</span></h3>
+        </h3>
       </div>
       <div class="col-md-4">
         <h3 class="float-md-right price {% if lines|length <= 2 %}single{% endif %}" data-quantity="{{ quantity }}">

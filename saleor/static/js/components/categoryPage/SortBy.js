@@ -61,7 +61,7 @@ export default class sortBy extends Component {
           <ul className="sort-list">
             <li className="name">
               <div className="row">
-                <div className="col-6">{pgettext('Category page filters', 'Sort by:')} <strong>{gettext('Name')}</strong></div>
+                <div className="col-6">{pgettext('Category page filters', 'Sort by:')} <strong>{pgettext('Category page filters', 'Name')}</strong></div>
                 <div className="col-6">
                     <div className="name" onClick={this.setSorting}>
                       <span>{pgettext('Category page filters', 'ascending')}</span>

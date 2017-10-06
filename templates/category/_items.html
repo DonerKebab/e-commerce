@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load price_range from price_ranges %}
 {% load product_first_image from product_images %}
+{% load product_first_image_alt from product_images %}
 {% load product_availability_schema from jsonld %}
 {% load get_thumbnail from product_images %}
 
@@ -13,13 +14,13 @@
   <a href="{{ product.get_absolute_url }}" class="link--clean">
     <div class="text-center">
       <div>
-        <img class="img-responsive" 
-             src="{% product_first_image product method="crop" size="255x255" %}" 
+        <img class="img-responsive"
+             src="{% product_first_image product method="crop" size="255x255" %}"
              srcset="{% product_first_image product method="crop" size="255x255" %} 1x, {% product_first_image product method="crop" size="510x510" %} 2x"
-             alt="">
+             alt="{% product_first_image_alt product %}">
         <span class="product-list-item-name" title="{{ product }}">{{ product }}</span>
       </div>
-      
+
       <div class="panel-footer">
         {% if availability.available %}
           {% price_range availability.price_range %}

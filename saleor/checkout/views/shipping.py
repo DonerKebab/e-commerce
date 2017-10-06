@@ -17,6 +17,11 @@ def anonymous_user_shipping_address_view(request, checkout):
     user_form = AnonymousUserShippingForm(
         not preview and request.POST or None, initial={'email': checkout.email}
         if not preview else request.POST.dict())
+
+    print(user_form.is_valid())
+
+    print(address_form.is_valid())
+    print(address_form.errors)
     if all([user_form.is_valid(), address_form.is_valid()]):
         checkout.shipping_address = address_form.instance
         checkout.email = user_form.cleaned_data['email']

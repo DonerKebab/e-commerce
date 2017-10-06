@@ -71,6 +71,8 @@ def order_details(request, order_pk):
            'preauthorized': preauthorized, 'can_capture': can_capture,
            'can_release': can_release, 'can_refund': can_refund,
            'balance': balance}
+
+    print(ctx)
     return TemplateResponse(request, 'dashboard/order/detail.html', ctx)
 
 

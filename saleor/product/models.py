@@ -40,6 +40,14 @@ class Category(MPTTModel):
     hidden = models.BooleanField(
         pgettext_lazy('Category field', 'hidden'), default=False)
 
+    seo_keyword = models.CharField(
+        pgettext_lazy('Category field', 'seo keyword'),
+        max_length=128, blank=True, null=True)
+
+    seo_description = models.CharField(
+        pgettext_lazy('Category field', 'seo description'),
+        max_length=128, blank=True, null=True)
+
     objects = models.Manager()
     tree = TreeManager()
 
@@ -67,6 +75,8 @@ class Category(MPTTModel):
     def set_hidden_descendants(self, hidden):
         self.get_descendants().update(hidden=hidden)
 
+    def get_visible_children_category(self):
+        return self.get_children().filter(hidden=False)
 
 @python_2_unicode_compatible
 class ProductClass(models.Model):
@@ -132,6 +142,14 @@ class Product(models.Model, ItemRange, index.Indexed):
         pgettext_lazy('Product field', 'updated at'), auto_now=True, null=True)
     is_featured = models.BooleanField(
         pgettext_lazy('Product field', 'is featured'), default=False)
+
+    seo_keyword = models.CharField(
+        pgettext_lazy('Product field', 'seo keyword'),
+        max_length=128, blank=True, null=True)
+
+    seo_description = models.CharField(
+        pgettext_lazy('Product field', 'seo description'),
+        max_length=128, blank=True, null=True)
 
     objects = ProductManager()
 
