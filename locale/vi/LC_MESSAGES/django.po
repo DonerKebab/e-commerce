@@ -1053,15 +1053,15 @@ msgstr ""
 #: saleor/registration/forms.py:23
 msgctxt "User form field"
 msgid "Password"
-msgstr ""
+msgstr "Mật khẩu"
 
 #: saleor/registration/views.py:23
 msgid "You have been successfully logged out."
-msgstr ""
+msgstr "Đăng xuất thành công."
 
 #: saleor/registration/views.py:31
 msgid "User has been created"
-msgstr ""
+msgstr "Tài khoản của bạn vừa được tạo."
 
 #: saleor/search/forms.py:8
 msgctxt "Search form label"
@@ -1380,17 +1380,17 @@ msgstr ""
 #: saleor/userprofile/views.py:28
 msgctxt "Storefront message"
 msgid "Password successfully changed."
-msgstr ""
+msgstr "Thay đổi mật khẩu thành công."
 
 #: saleor/userprofile/views.py:40
 msgctxt "Storefront message"
 msgid "Address successfully updated."
-msgstr ""
+msgstr "Cập nhật địa chỉ thành công."
 
 #: saleor/userprofile/views.py:55
 msgctxt "Storefront message"
 msgid "Address successfully deleted."
-msgstr ""
+msgstr "Xóa địa chỉ thành công"
 
 #: templates/account/email/email_confirmation_message.txt:3
 #, python-format
@@ -1617,27 +1617,27 @@ msgstr ""
 #: templates/account/signup.html:6
 msgctxt "Signup page title"
 msgid "Sign Up"
-msgstr ""
+msgstr "Đăng kí tài khỏan"
 
 #: templates/account/signup.html:13
 msgctxt "Signup form secondary title"
 msgid "Already have an account?"
-msgstr ""
+msgstr "Bạn đã có tài khoản?"
 
 #: templates/account/signup.html:17
 msgctxt "Signup form secondary action"
 msgid "Log in"
-msgstr ""
+msgstr "Đăng nhập"
 
 #: templates/account/signup.html:24
 msgctxt "Signup form title"
 msgid "Create an account"
-msgstr ""
+msgstr "Tạo tài khỏan"
 
 #: templates/account/signup.html:33
 msgctxt "Signup form primary action"
 msgid "Create an account"
-msgstr ""
+msgstr "Tạo tài khỏan"
 
 #: templates/base.html:13
 msgctxt "Meta author text"
@@ -1671,7 +1671,7 @@ msgstr ""
 
 #: templates/base.html:91
 msgid "Search for product"
-msgstr ""
+msgstr "Tìm sản phẩm"
 
 #: templates/base.html:102 templates/base.html:179
 msgctxt "Main navigation item"
@@ -3749,13 +3749,13 @@ msgstr ""
 #: templates/order/create_password.html:7
 msgctxt "Checkout create password page title"
 msgid "Create password"
-msgstr ""
+msgstr "Tạo mật khẩu"
 
 #: templates/order/create_password.html:15
 #, python-format
 msgctxt "Checkout title"
 msgid "Thank you for your <a href=\"%(order_url)s\">order</a>!"
-msgstr ""
+msgstr "Cảm ơn bạn đã <a href=\"%(order_url)s\">đặt hàng</a>!"
 
 #: templates/order/create_password.html:19
 #, python-format
@@ -3786,12 +3786,12 @@ msgstr ""
 #: templates/order/create_password.html:46
 msgctxt "Checkout primary action"
 msgid "Create an account"
-msgstr ""
+msgstr "Tạo tài khoản"
 
 #: templates/order/create_password.html:58
 msgctxt "Checkout secondary action"
 msgid "Continue shopping"
-msgstr ""
+msgstr "Tiếp tục mua hàng"
 
 #: templates/order/details.html:7
 #, python-format
