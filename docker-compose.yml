@@ -1,10 +1,21 @@
 version: '2'
 services:
+  nginx:
+    image: nginx:latest
+    container_name: ng01
+    ports:
+      - "80:80"
+    volumes:
+      - ./config/nginx:/etc/nginx/conf.d
+      - ./static:/static
+      - ./media:/media
+    depends_on:
+      - web
   db:
     image: postgres
     environment:
-      - POSTGRES_USER=saleor
-      - POSTGRES_PASSWORD=saleor
+      - POSTGRES_USER=sieuthitienich247
+      - POSTGRES_PASSWORD=sieuthitienich247
     ports:
       - '127.0.0.1:5432:5432'
   redis:
@@ -17,19 +28,21 @@ services:
       - '127.0.0.1:9200:9200'
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: uwsgi --ini /app/saleor/wsgi/uwsgi.ini
     environment:
-      - DATABASE_URL=postgres://saleor:saleor@db/saleor
+      - DATABASE_URL=postgres://sieuthitienich247:sieuthitienich247@db/sieuthitienich247
       - DEFAULT_FROM_EMAIL=noreply@example.com
       - ELASTICSEARCH_URL=http://search:9200/
-      - OPENEXCHANGERATES_API_KEY
       - REDIS_URL=redis://redis:6379/0
-      - SECRET_KEY=changeme
+      - SECRET_KEY=h!w^z)qg-pc+lzu%1d6#6+5b0nhe_1cq1w$&wqsm0hx3umbefq
+      - DEBUG=False
     depends_on:
       - db
       - redis
       - search
-    ports:
-      - '8000:8000'
+    expose:
+      - "8000"
     volumes:
       - .:/app:Z
+      - ./static:/static
+      - ./media:/media
