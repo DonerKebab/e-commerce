@@ -1,4 +1,24 @@
+.dropdown-menu {
+  position: absolute !important;
+  top: 0px !important;
+  left: 0px !important;
+  transform: translate3d(0px, 40px, 0px);
+    a {
+       color: $body-color;
+       transition: 0.3s;
+       text-transform: uppercase;
+       display: inline-block;
+       padding: $global-padding * 1.5;
+       font-size: 1rem !important;
+       &:hover {
+         color: rgba($body-color, 0.6);
+ 
+       }
+    }
+  }
+
 .navigation {
+  z-index: 1000 !important;
   ul {
     border-bottom: 1px solid $gray;
     margin-bottom: $global-margin;
@@ -32,20 +52,6 @@
   }
 }
 .navbar {
-  .dropdown-menu {
-    a {
-      color: $body-color;
-      transition: 0.3s;
-      text-transform: uppercase;
-      display: inline-block;
-      padding: $global-padding * 1.5;
-      font-size: 1rem !important;
-      &:hover {
-        color: rgba($body-color, 0.6);
-
-      }
-    }
-  }
   padding: 0;
   @include media-breakpoint-down(sm) {
     svg {
