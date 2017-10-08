@@ -239,5 +239,15 @@
             {% render_bundle 'storefront' 'js' %}
         {% endblock footer_scripts %}
     <script type="application/ld+json">{{ webpage_schema|safe }}</script>
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107695369-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-107695369-1');
+    </script>
+
     </body>
 </html>
