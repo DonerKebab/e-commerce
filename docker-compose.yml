@@ -14,8 +14,8 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_USER=sieuthitienich247
-      - POSTGRES_PASSWORD=sieuthitienich247
+      - POSTGRES_USER=saleor
+      - POSTGRES_PASSWORD=saleor
     ports:
       - '127.0.0.1:5432:5432'
   redis:
@@ -30,11 +30,10 @@ services:
     build: .
     command: uwsgi --ini /app/saleor/wsgi/uwsgi.ini
     environment:
-      - DATABASE_URL=postgres://sieuthitienich247:sieuthitienich247@db/sieuthitienich247
+      - DATABASE_URL=postgres://saleor:saleor@db/saleor
       - DEFAULT_FROM_EMAIL=noreply@example.com
       - ELASTICSEARCH_URL=http://search:9200/
       - REDIS_URL=redis://redis:6379/0
-      - SECRET_KEY=h!w^z)qg-pc+lzu%1d6#6+5b0nhe_1cq1w$&wqsm0hx3umbefq
       - DEBUG=False
     depends_on:
       - db

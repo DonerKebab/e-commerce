@@ -176,7 +176,7 @@ msgstr ""
 #: saleor/checkout/forms.py:19
 msgctxt "Shipping addresses form choice"
 msgid "Enter a new address"
-msgstr ""
+msgstr "Nhập địa chỉ mới"
 
 #: saleor/checkout/forms.py:23
 msgctxt "Shipping addresses form field label"
@@ -186,7 +186,7 @@ msgstr ""
 #: saleor/checkout/forms.py:41
 msgctxt "Billing addresses form choice"
 msgid "Enter a new address"
-msgstr "Nhập địa chỉ khác"
+msgstr "Nhập địa chỉ mới"
 
 #: saleor/checkout/forms.py:43
 msgctxt "Billing addresses form choice"
@@ -1793,7 +1793,7 @@ msgstr ""
 #: templates/checkout/details.html:62
 msgctxt "Order review section title"
 msgid "Promo code"
-msgstr ""
+msgstr "Mã giảm giá"
 
 #: templates/checkout/details.html:68
 msgctxt "Order review section title"
@@ -1808,22 +1808,22 @@ msgstr ""
 #: templates/checkout/login.html:11
 msgctxt "Checkout login page title"
 msgid "New customer?"
-msgstr ""
+msgstr "Bạn là khách hàng mới?"
 
 #: templates/checkout/login.html:15
 msgctxt "Checkout login page new users action"
 msgid "Continue"
-msgstr ""
+msgstr "Tiếp tục"
 
 #: templates/checkout/login.html:17
 msgctxt "Checkout login page new users message"
 msgid "Registration is not required!"
-msgstr ""
+msgstr "Đăng kí tài khoản là không bắt buộc!"
 
 #: templates/checkout/login.html:22
 msgctxt "Checkout login form title"
 msgid "Existing customer? Log in."
-msgstr ""
+msgstr "Bạn đã có tài khoản? Đăng nhập ngay."
 
 #: templates/checkout/payment.html:9
 msgctxt "Checkout payment title"
@@ -1872,7 +1872,7 @@ msgstr ""
 #: templates/checkout/snippets/addresses-form.html:11
 msgctxt "Checkout addresses form label"
 msgid "Enter a new address"
-msgstr ""
+msgstr "Nhập địa chỉ mới"
 
 #: templates/checkout/snippets/voucher-form.html:15
 msgctxt "Checkout voucher form action"
@@ -1887,7 +1887,7 @@ msgstr ""
 #: templates/checkout/snippets/voucher-form.html:28
 msgctxt "Checkout voucher form action"
 msgid "Use"
-msgstr ""
+msgstr "Sử dụng"
 
 #: templates/checkout/summary.html:7
 msgctxt "Checkout summary title"
@@ -1907,7 +1907,7 @@ msgstr "Địa chỉ giao hàng"
 #: templates/checkout/summary_without_shipping.html:17
 msgctxt "Checkout summary without shipping action"
 msgid "Place order"
-msgstr ""
+msgstr "Đặt hàng"
 
 #: templates/dashboard/base.html:10
 msgctxt "Dashboard default page title"
