@@ -122,25 +122,12 @@
                       <ul class="nav navbar-nav{% if request.get_full_path == home_url %} no-border{% endif %}" >
                         {% for category in categories %}
                           {% with num_of_child=category.get_visible_children_category|length %}
-                            {% if num_of_child > 0 %}
-                              <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" id="{{category}}" aria-expanded="false" href="{{ category.get_absolute_url }}">
-                                    {{ category }}
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="{{category}}">
-                                  {% for child_category in category.get_visible_children_category %}
-                                    <a class="dropdown-item" href="{{child_category.get_absolute_url}}">{{child_category}}</a>
-                                  {% endfor %}
-                                </div>
-                              </li>
-                            {% else %}
+                           
                               <li class="nav-item">
                                 <a class="nav-link" href="{{ category.get_absolute_url }}">
                                     {{ category }}
                                 </a>
                               </li>
-                            {% endif %}
                           {% endwith %}
                         {% endfor %}
                       </ul>
