@@ -22,6 +22,12 @@ def products_visible_to_user(user):
     else:
         return Product.objects.get_available_products()
 
+def categories_visible_to_user(user):
+    from .models import Category
+    if user.is_authenticated and user.is_active and user.is_staff:
+        return Category.objects.filter(level=0).all()
+    else:
+        return Category.objects.filter(hidden=False, level=0).all()
 
 def products_with_details(user):
     products = products_visible_to_user(user)
@@ -39,11 +45,35 @@ def products_for_api(user):
         'images', 'categories', 'variants', 'variants__stock')
 
 
-def products_for_homepage():
+def products_for_homepage(request):
     user = AnonymousUser()
+    # featured_products
     products = products_with_details(user)
-    products = products.filter(is_featured=True)
-    return products
+    featured_products = products.filter(is_featured=True).all()
+    featured_products = featured_products[:8]
+    featured_products = products_with_availability(
+            featured_products, discounts=request.discounts, local_currency=request.currency)
+
+    # product for each category ( get new product )
+    new_products = products.filter(is_new=True).all()
+    products_categories = []
+    categories = categories_visible_to_user(user)
+    for category in categories:
+        detail = {'name': category.name, 'category': category}
+        product_list = []
+        for product in new_products:
+            print(category)
+            print(product.categories.all())
+            if category in product.categories.all():
+                product_list.append(product)
+
+        product_list = product_list[:8]
+        product_list = products_with_availability(
+            product_list, discounts=request.discounts, local_currency=request.currency)
+        detail['products'] = product_list
+        products_categories.append(detail)
+
+    return featured_products, products_categories
 
 
 def get_product_images(product):

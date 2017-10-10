@@ -149,7 +149,14 @@ class Product(models.Model, ItemRange, index.Indexed):
 
     seo_description = models.CharField(
         pgettext_lazy('Product field', 'seo description'),
-        max_length=128, blank=True, null=True)
+        max_length=256, blank=True, null=True)
+
+    is_new = models.BooleanField(
+        pgettext_lazy('Product field', 'is new'), default=False)
+
+    supplier_url = models.CharField(
+        pgettext_lazy('Product field', 'supplier url'),
+        max_length=256, blank=True, null=True)
 
     objects = ProductManager()
 

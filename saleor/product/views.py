@@ -111,6 +111,7 @@ def product_add_to_cart(request, slug, product_id):
 
 def category_index(request, path, category_id):
     category = get_object_or_404(Category, id=category_id)
+    print(category.products)
     actual_path = category.get_full_path()
     if actual_path != path:
         return redirect('product:category', permanent=True, path=actual_path,

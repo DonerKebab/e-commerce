@@ -868,17 +868,32 @@ msgstr "Các thuộc tính"
 #: saleor/product/models.py:132
 msgctxt "Product field"
 msgid "updated at"
-msgstr "Chỉnh sửa"
+msgstr "chỉnh sửa"
 
 #: saleor/product/models.py:134
 msgctxt "Product field"
 msgid "is featured"
 msgstr "hiện ở trang chủ"
 
-#: saleor/product/models.py:134
+#: saleor/product/models.py:147
 msgctxt "Product field"
 msgid "seo keyword"
-msgstr "Từ khóa Seo"
+msgstr "từ khóa Seo"
+
+#: saleor/product/models.py:151
+msgctxt "Product field"
+msgid "seo description"
+msgstr "mô tả trang (Seo)"
+
+#: saleor/product/models.py:155
+msgctxt "Product field"
+msgid "is new"
+msgstr "sản phẩm mới"
+
+#: saleor/product/models.py:158
+msgctxt "Product field"
+msgid "supplier url"
+msgstr "Link sản phẩm"
 
 #: saleor/product/models.py:145
 msgctxt "Product model"
