@@ -385,6 +385,8 @@ class ProductAttribute(models.Model):
     name = models.CharField(
         pgettext_lazy('Product attribute field', 'display name'),
         max_length=100)
+    show_in_store = models.BooleanField(
+        pgettext_lazy('Product attribute field', 'show in store'), default=False)
 
     class Meta:
         ordering = ('slug', )

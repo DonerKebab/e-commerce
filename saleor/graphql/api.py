@@ -270,7 +270,7 @@ class Query(graphene.ObjectType):
                     categories__in=tree).values_list('product_class_id')])
             queryset = queryset.filter(
                 Q(products_class__in=product_classes) |
-                Q(product_variants_class__in=product_classes))
+                Q(product_variants_class__in=product_classes)).filter(show_in_store=True)
         return queryset.distinct()
 
     def resolve_root(self, args, context, info):
