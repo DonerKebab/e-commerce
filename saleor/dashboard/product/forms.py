@@ -13,6 +13,7 @@ from ...product.models import (AttributeChoiceValue, Product, ProductAttribute,
                                Stock, StockLocation, VariantImage)
 from .widgets import ImagePreviewWidget
 from ...search import index as search_index
+from ckeditor.widgets import CKEditorWidget
 
 
 class ProductClassSelectorForm(forms.Form):
@@ -91,9 +92,9 @@ class ProductClassForm(forms.ModelForm):
                     self.add_error('has_variants', msg)
         return data
 
-
+from ckeditor.fields import RichTextFormField
 class ProductForm(forms.ModelForm):
-
+    long_description = RichTextFormField()
     class Meta:
         model = Product
         exclude = ['attributes', 'product_class']
@@ -111,6 +112,7 @@ class ProductForm(forms.ModelForm):
         self.product_attributes = product_class.product_attributes.all()
         self.product_attributes = self.product_attributes.prefetch_related(
             'values')
+
         self.prepare_fields_for_attributes()
 
     def prepare_fields_for_attributes(self):
