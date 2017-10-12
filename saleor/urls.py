@@ -35,6 +35,7 @@ urlpatterns = [
         name='django.contrib.sitemaps.views.sitemap'),
     url(r'', include('payments.urls')),
     url('', include('social_django.urls', namespace='social')),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 if settings.DEBUG:
