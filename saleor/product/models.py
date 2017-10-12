@@ -118,7 +118,7 @@ class ProductManager(models.Manager):
         return self.get_queryset().filter(
             Q(available_on__lte=today) | Q(available_on__isnull=True))
 
-
+from ckeditor.fields import RichTextField
 @python_2_unicode_compatible
 class Product(models.Model, ItemRange, index.Indexed):
     product_class = models.ForeignKey(
@@ -150,6 +150,9 @@ class Product(models.Model, ItemRange, index.Indexed):
     seo_description = models.CharField(
         pgettext_lazy('Product field', 'seo description'),
         max_length=128, blank=True, null=True)
+
+    long_description = RichTextField(pgettext_lazy('Product field', 'Long description'),
+        default="<p></p>")
 
     objects = ProductManager()
 
@@ -385,6 +388,8 @@ class ProductAttribute(models.Model):
     name = models.CharField(
         pgettext_lazy('Product attribute field', 'display name'),
         max_length=100)
+    show_in_store = models.BooleanField(
+        pgettext_lazy('Product attribute field', 'show in store'), default=False)
 
     class Meta:
         ordering = ('slug', )

@@ -156,4 +156,12 @@
       </table>
     </div>
   </div>
+  <hr>
+  <div class="row product">
+    <div class="hidden-md-down">
+      {% autoescape off %}{{ product.long_description }}{% endautoescape %} 
+    </div>
+    
+  </div>
+
 {% endblock content %}

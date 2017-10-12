@@ -73,8 +73,8 @@ msgstr ""
 msgctxt "Add to cart form error"
 msgid "Only %d remaining in stock."
 msgid_plural "Only %d remaining in stock."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Chỉ còn %d sản phẩm trong kho."
+msgstr[1] "Chỉ còn %d sản phẩm trong kho."
 
 #: saleor/cart/forms.py:129
 msgctxt "Country form field label"
@@ -124,7 +124,7 @@ msgstr ""
 #: saleor/cart/models.py:88
 msgctxt "Cart field"
 msgid "quantity"
-msgstr ""
+msgstr "số lượng"
 
 #: saleor/cart/models.py:94
 msgctxt "Cart model"
@@ -149,7 +149,7 @@ msgstr ""
 #: saleor/cart/models.py:213
 msgctxt "Cart line field"
 msgid "quantity"
-msgstr ""
+msgstr "số lượng"
 
 #: saleor/cart/models.py:217
 msgctxt "Cart line field"
@@ -628,7 +628,7 @@ msgstr ""
 #: saleor/order/models.py:342
 msgctxt "Ordered item field"
 msgid "quantity"
-msgstr ""
+msgstr "số lượng"
 
 #: saleor/order/models.py:345
 msgctxt "Ordered item field"
@@ -938,7 +938,7 @@ msgstr ""
 #: saleor/product/models.py:338
 msgctxt "Stock item field"
 msgid "quantity"
-msgstr ""
+msgstr "số lượng"
 
 #: saleor/product/models.py:341
 msgctxt "Stock item field"
@@ -954,6 +954,11 @@ msgstr ""
 msgctxt "Product attribute field"
 msgid "internal name"
 msgstr ""
+
+#: saleor/product/models.py:368
+msgctxt "Product attribute field"
+msgid "show in store"
+msgstr "hiển thị ở trang chủ"
 
 #: saleor/product/models.py:368
 msgctxt "Product attribute field"
@@ -3001,7 +3006,7 @@ msgstr ""
 #: templates/dashboard/order/modal_change_quantity.html:8
 msgctxt "Modal change quantity title"
 msgid "Change quantity"
-msgstr ""
+msgstr "Thay đổi số lượng"
 
 #: templates/dashboard/order/modal_order_remove_voucher.html:6
 msgctxt "Modal remove voucher from order title"
