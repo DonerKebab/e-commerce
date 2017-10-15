@@ -4056,17 +4056,17 @@ msgstr "Mô tả"
 
 #: templates/search/results.html:33
 msgid "Search:"
-msgstr ""
+msgstr "Tìm kiếm:"
 
 #: templates/search/results.html:35
 msgctxt "Search without results text"
 msgid "Sorry, no matches found for your request."
-msgstr ""
+msgstr "Rất tiếc, không tìm thấy kết quả nào."
 
 #: templates/search/results.html:36
 msgctxt "Search without results text"
 msgid "Try again or shop new arrivals."
-msgstr ""
+msgstr "Vui lòng thử lại với từ khóa khác."
 
 #: templates/userprofile/address-delete.html:6
 msgctxt "Delete address form action"
@@ -4170,7 +4170,7 @@ msgstr "Chi tiết"
 #: templates/userprofile/details.html:90
 msgctxt "No recent orders text"
 msgid "There are not any completed orders yet."
-msgstr ""
+msgstr "Bạn chưa có đơn hàng nào."
 
 #: templates/userprofile/details.html:102
 msgctxt "User profile action"
