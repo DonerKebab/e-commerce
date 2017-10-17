@@ -5,6 +5,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.views import serve
 from django.views.i18n import javascript_catalog
 from graphene_django.views import GraphQLView
+from django.http import HttpResponse
 
 from .cart.urls import urlpatterns as cart_urls
 from .checkout.urls import urlpatterns as checkout_urls
@@ -36,6 +37,7 @@ urlpatterns = [
     url(r'', include('payments.urls')),
     url('', include('social_django.urls', namespace='social')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^robots.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: ", content_type="text/plain"))
 ]
 
 if settings.DEBUG:
