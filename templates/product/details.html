@@ -9,8 +9,13 @@
 {% load get_thumbnail from product_images %}
 
 {% block title %}{{ product }} — {{ block.super }}{% endblock %}
-{% block meta_description %} {{product.seo_description}} {%endblock%}
-{% block meta_keywords %} {{product.seo_keyword}} {%endblock%}
+{% block meta_description %}{{product.seo_description}}{%endblock%}
+{% block meta_keywords %}{{product.seo_keyword}}{%endblock%}
+{% block og_title %}{{ product }}{% endblock %}
+{% block og_des %}{{product.seo_description}}{% endblock %}
+
+
+{% block og_image %}{% with images=product_images %}http://sieuthitienich247.com{% get_thumbnail images.0.image method="crop" size="500x500" %}{% endwith %}{% endblock %}
 
 {% block breadcrumb %}
   <ul class="breadcrumbs list-unstyled">

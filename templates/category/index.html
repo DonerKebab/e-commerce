@@ -9,9 +9,12 @@
   {% render_bundle 'category' 'js' %}
 {% endblock footer_scripts %}
 
-{% block title %}{{ category }} — {{ block.super }}{% endblock %}
-{% block meta_keywords %} {{category.seo_keyword}} {%endblock%}
-{% block meta_description %} {{category.seo_description}} {%endblock%}
+{% block title %}{{ category }} | {{ block.super }}{% endblock %}
+{% block meta_keywords %}{{category.seo_keyword}}{%endblock%}
+{% block meta_description %}{{category.seo_description}}{%endblock%}
+{% block og_title %}{{ category }}{% endblock %}
+{% block og_des %}{{category.seo_description}}{% endblock %}
+{% block og_image %}http://sieuthitienich247.com/static/images/favicon.png{% endblock %}
 
 {% block breadcrumb %}
     {{ block.super }}
