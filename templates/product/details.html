@@ -176,4 +176,13 @@
     
   </div>
 
+  <hr>
+  <div style="margin-top: 40px">
+    <h2 class="text-left">{% trans "Related products" context "Homepage title" %}</h2>
+    <div class="row" style="margin-top: 30px">
+      {% include "product/related_items.html" %}
+    </div>
+  </div>
+  
+
 {% endblock content %}
