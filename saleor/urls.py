@@ -18,6 +18,7 @@ from .product.urls import urlpatterns as product_urls
 from .registration.urls import urlpatterns as registration_urls
 from .search.urls import urlpatterns as search_urls
 from .userprofile.urls import urlpatterns as userprofile_urls
+from .bid.urls import urlpatterns as bid_urls
 
 urlpatterns = [
     url(r'^', include(core_urls)),
@@ -32,6 +33,7 @@ urlpatterns = [
     url(r'^profile/', include(userprofile_urls, namespace='profile')),
     url(r'^search/', include(search_urls, namespace='search')),
     url(r'^feeds/', include(feed_urls, namespace='data_feeds')),
+    url(r'^bid/', include(bid_urls, namespace='bid')),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap'),
     url(r'', include('payments.urls')),

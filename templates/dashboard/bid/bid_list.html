@@ -1,0 +1,61 @@
+{% extends "dashboard/base.html" %}
+{% load i18n %}
+{% load prices_i18n %}
+{% load materializecss %}
+
+{% block title %}
+  {% trans "Bids" %} - {{ block.super }}
+{% endblock %}
+
+{% block body_class %}body-bids{% endblock %}
+
+{% block menu_bid_class %}active{% endblock %}
+
+{% block breadcrumbs %}
+  <ul class="breadcrumbs">
+    <li class="visible-s">{% trans "Bids" context "Dashboard bids list." %}</li>
+  </ul>
+{% endblock %}
+
+
+{% block content %}
+  <div class="card">
+    <div class="data-table-header-action">
+      <a href="{% url 'dashboard:bid-add' %}" class="btn-data-table btn-flat"  title="{% trans "Add bid" context "Bid list add button text" %}">
+        {% trans "Add" context "Dashboard add action" %}
+      </a>
+    </div>
+    <div class="data-table-container">
+      <table class="bordered highlight responsive data-table">
+        <thead>
+          <tr>
+            <th>
+              {% trans "Name" context "Bid table header" %}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if bids %}
+            {% for bid in bids %}
+              <tr data-action-go="{% url 'dashboard:bid-update' pk=bid.pk %}">
+                <td>
+                  {{ bid.name }}
+                </td>
+               
+              </tr>
+            {% endfor %}
+          {% else %}
+          <tr>
+            <td>
+              <span>
+                {% trans "No bids found" context "Empty bids table message" %}
+              </span>
+            </td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% include "dashboard/includes/_pagination.html" %}
+{% endblock %}

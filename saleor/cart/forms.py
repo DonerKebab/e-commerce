@@ -48,6 +48,7 @@ class AddToCartForm(forms.Form):
         self.cart = kwargs.pop('cart')
         self.product = kwargs.pop('product')
         self.discounts = kwargs.pop('discounts', ())
+        self.bid_price = kwargs.pop('bid_price', None)
         super(AddToCartForm, self).__init__(*args, **kwargs)
 
     def clean(self):
@@ -80,7 +81,8 @@ class AddToCartForm(forms.Form):
         """Adds the selected product variant and quantity to the cart"""
         product_variant = self.get_variant(self.cleaned_data)
         return self.cart.add(variant=product_variant,
-                             quantity=self.cleaned_data['quantity'])
+                             quantity=self.cleaned_data['quantity'],
+                             bid_price=self.bid_price)
 
     def get_variant(self, cleaned_data):
         raise NotImplementedError()
@@ -119,7 +121,7 @@ class ReplaceCartLineForm(AddToCartForm):
     def save(self):
         """Replaces the selected product's quantity in cart"""
         product_variant = self.get_variant(self.cleaned_data)
-        return self.cart.add(product_variant, self.cleaned_data['quantity'],
+        return self.cart.add(product_variant, self.cleaned_data['quantity'], bid_price=self.cart_line.bid_price,
                              replace=True)
 
 

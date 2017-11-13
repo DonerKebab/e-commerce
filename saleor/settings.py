@@ -171,6 +171,7 @@ INSTALLED_APPS = [
     'saleor.search',
     'saleor.site',
     'saleor.data_feeds',
+    'saleor.bid',
 
     # External apps
     'versatileimagefield',
@@ -287,8 +288,8 @@ BOOTSTRAP3 = {
 }
 
 TEST_RUNNER = ''
-
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split()
+
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 

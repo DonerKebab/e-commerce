@@ -105,9 +105,14 @@ def handle_cart_form(request, product, create_cart=False):
         cart = get_or_create_cart_from_request(request)
     else:
         cart = get_cart_from_request(request)
+
+    bid_price = None
+    if request.method == 'POST':
+        bid_price = request.POST.get('bid_price', None)
+
     form = ProductForm(
         cart=cart, product=product, data=request.POST or None,
-        discounts=request.discounts)
+        discounts=request.discounts, bid_price=bid_price)
     return form, cart
 
 

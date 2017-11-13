@@ -14,6 +14,7 @@ from django.utils.translation import pgettext_lazy
 from django_prices.models import PriceField
 from jsonfield import JSONField
 from satchless.item import ItemLine, ItemList, partition
+from django_prices.models import PriceField
 
 from . import CartStatus, logger
 
@@ -170,10 +171,10 @@ class Cart(models.Model):
         if line:
             return line[0]
 
-    def add(self, variant, quantity=1, data=None, replace=False,
+    def add(self, variant, quantity=1, bid_price=None, data=None, replace=False,
             check_quantity=True):
         cart_line, created = self.lines.get_or_create(
-            variant=variant, defaults={'quantity': 0, 'data': data or {}})
+            variant=variant, bid_price=bid_price, defaults={'quantity': 0, 'data': data or {}})
         if replace:
             new_quantity = quantity
         else:
@@ -216,8 +217,13 @@ class CartLine(models.Model, ItemLine):
         blank=True, default={},
         verbose_name=pgettext_lazy('Cart line field', 'data'))
 
+    bid_price = PriceField(
+        pgettext_lazy('Cart line field', 'bid price'),
+        currency=settings.DEFAULT_CURRENCY, max_digits=12, decimal_places=2,
+        blank=True, null=True)
+
     class Meta:
-        unique_together = ('cart', 'variant', 'data')
+        unique_together = ('cart', 'variant', 'data', 'bid_price')
         verbose_name = pgettext_lazy('Cart line model', 'Cart line')
         verbose_name_plural = pgettext_lazy('Cart line model', 'Cart lines')
 
@@ -230,7 +236,8 @@ class CartLine(models.Model, ItemLine):
 
         return (self.variant == other.variant and
                 self.quantity == other.quantity and
-                self.data == other.data)
+                self.data == other.data and
+                self.bid_price == other.bid_price)
 
     def __ne__(self, other):
         return not self == other  # pragma: no cover
@@ -240,10 +247,10 @@ class CartLine(models.Model, ItemLine):
             self.variant, self.quantity, self.data)
 
     def __getstate__(self):
-        return self.variant, self.quantity, self.data
+        return self.variant, self.quantity, self.data, self.bid_price
 
     def __setstate__(self, data):
-        self.variant, self.quantity, self.data = data
+        self.variant, self.quantity, self.data, self.bid_price = data
 
     def get_total(self, **kwargs):
         amount = super(CartLine, self).get_total(**kwargs)
@@ -253,7 +260,8 @@ class CartLine(models.Model, ItemLine):
         return self.quantity
 
     def get_price_per_item(self, discounts=None, **kwargs):
-        return self.variant.get_price_per_item(discounts=discounts, **kwargs)
+        return self.bid_price or self.variant.get_price_per_item(discounts=discounts, **kwargs)
+        # return self.variant.get_price_per_item(discounts=discounts, **kwargs)
 
     def is_shipping_required(self):
         return self.variant.is_shipping_required()

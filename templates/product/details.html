@@ -100,7 +100,7 @@
           <div id="variant-price-component"></div>
         {% else %}
           <h2 class="product__info__price">
-            <span>{% price_range availability.price_range %}</span>
+            <span>Giá bán lẻ: {% price_range availability.price_range %}</span>
             {% if availability.discount %}
               <small class="product__info__price__undiscounted">{% gross availability.price_range_undiscounted.min_price html=True %}</small>
             {% endif %}
@@ -114,37 +114,44 @@
           </h2>
         {% endif %}
       {% endif %}
-      {% if is_visible and product.is_in_stock %}
-        {% block orderform %}
-          {% if show_variant_picker %}
-            {% csrf_token %}
-            <div id="variant-picker" data-variant-picker-data="{{ variant_picker_data }}" data-action="{% url 'product:add-to-cart' product_id=product.pk slug=product.get_slug %}"></div>
-          {% else %}
-            <form id="product-form" role="form" class="product-form clearfix" method="post"
-                  action="{% url 'product:add-to-cart' product_id=product.pk slug=product.get_slug %}" novalidate>
-              {% csrf_token %}
-              {% bootstrap_field form.variant %}
-              <div class="product__info__quantity">
-                {% bootstrap_field form.quantity %}
-              </div>
 
-              <div class="form-group product__info__button">
-                <button class="btn primary">
-                  Thêm vào giỏ hàng
-                </button>
-              </div>
-            </form>
-          {% endif %}
-        {% endblock %}
-        <div class="product__info__form-error">
-          <small class="text-danger"></small>
-        </div>
-
+      {% if is_bidding %}
+        <div id="bid-picker" data-variant-picker-data="{{ variant_picker_data }}" data-get-bid-price-action="{% url 'bid:get-bid-price' bid_session_id=bidding_session.id product_id=product.pk %}" data-bid-price-action="{% url 'bid:bid-price'%}" data-end-bid="{{bidding_session.end_bid.isoformat}}" data-product-id="{{product.id}}" data-url-add-cart="{% url 'product:add-to-cart' product_id=product.pk slug=product.get_slug %}"
+        data-session-id="{{bidding_session.id}}" data-max-price="{{product.price.net}}" data-min-price="{{product.start_bid_price.net}}"></div>
       {% else %}
-        <p class="alert alert-warning">
-          {% blocktrans context "Product details text" %}This product is currently <strong>unavailable</strong>.{% endblocktrans %}
-        </p>
+        {% if is_visible and product.is_in_stock %}
+          {% block orderform %}
+            {% if show_variant_picker %}
+              {% csrf_token %}
+              <div id="variant-picker" data-variant-picker-data="{{ variant_picker_data }}" data-action="{% url 'product:add-to-cart' product_id=product.pk slug=product.get_slug %}"></div>
+            {% else %}
+              <form id="product-form" role="form" class="product-form clearfix" method="post"
+                    action="{% url 'product:add-to-cart' product_id=product.pk slug=product.get_slug %}" novalidate>
+                {% csrf_token %}
+                {% bootstrap_field form.variant %}
+                <div class="product__info__quantity">
+                  {% bootstrap_field form.quantity %}
+                </div>
+
+                <div class="form-group product__info__button">
+                  <button class="btn primary">
+                    Thêm vào giỏ hàng
+                  </button>
+                </div>
+              </form>
+            {% endif %}
+          {% endblock %}
+          <div class="product__info__form-error">
+            <small class="text-danger"></small>
+          </div>
+
+        {% else %}
+          <p class="alert alert-warning">
+            {% blocktrans context "Product details text" %}This product is currently <strong>unavailable</strong>.{% endblocktrans %}
+          </p>
+        {% endif %}
       {% endif %}
+
       <div class="product__info__description">
         <h3>{% trans "Description" context "Product details title" %}</h3>
         <hr>

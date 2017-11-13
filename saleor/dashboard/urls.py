@@ -9,6 +9,7 @@ from .discount.urls import urlpatterns as discount_urls
 from .search.urls import urlpatterns as search_urls
 from .sites.urls import urlpatterns as site_urls
 from .shipping.urls import urlpatterns as shipping_urls
+from .bid.urls import urlpatterns as bid_urls 
 
 
 urlpatterns = [
@@ -21,5 +22,5 @@ urlpatterns = [
     url(r'^search/', include(search_urls)),
     url(r'^settings/', include(site_urls)),
     url(r'^shipping/', include(shipping_urls)),
-    url(r'^style-guide/', core_views.styleguide, name='styleguide'),
+    url(r'^bid/', include(bid_urls)),
 ]
