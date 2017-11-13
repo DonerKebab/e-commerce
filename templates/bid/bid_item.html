@@ -1,0 +1,76 @@
+{% load i18n %}
+{% load staticfiles %}
+{% load price_range from price_ranges %}
+{% load product_first_image from product_images %}
+{% load product_first_image_alt from product_images %}
+{% load product_availability_schema from jsonld %}
+{% load get_thumbnail from product_images %}
+
+{% for product in bid_session.products.all %}
+<div class="col-6 col-lg-3 product-list">
+  <script type="application/ld+json">
+    {% autoescape off %}{% product_availability_schema product %}{% endautoescape %}
+  </script>
+  <a href="{{ product.get_absolute_url }}" class="link--clean">
+    <div class="text-center">
+      <div>
+        <img class="img-responsive"
+             src="{% product_first_image product method="crop" size="255x255" %}"
+             srcset="{% product_first_image product method="crop" size="255x255" %} 1x, {% product_first_image product method="crop" size="510x510" %} 2x"
+             alt="{% product_first_image_alt product %}">
+      </div>
+      <div class="row">
+        <div class="col-md-6" ><h4 style="color: red" id="countdown{{ forloop.counter0 }}"></h4></div>
+        <div class="col-md-6"><h4>{% price_range product.get_price_range %}</h4></div>
+
+      </div>
+      <div class="row"> 
+        <button type="button" style="margin: 0 20px" class="btn btn-block btn-primary">Đấu giá ngay</button>
+      </div>
+    </div>
+  </a>
+</div>
+{% endfor %}
+
+<script>
+  var selected_date = new Date("{{ bid_session.end_bid.isoformat }}");
+
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now an the count down date
+    var distance = selected_date - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    if(minutes < 10)
+    {
+      minutes = "0" + minutes;
+    }
+
+    if(seconds < 10)
+    {
+      seconds = "0" + seconds;
+    }
+
+    // Display the result in the element with id="demo"
+    for(var i =0; i<"{{bid_session.products.all|length}}";i++){
+      document.getElementById("countdown"+i).innerHTML = hours + ":" + minutes + ":" + seconds;
+    }
+    // If the count down is finished, write some text 
+    if (distance < 0) {
+      clearInterval(x);
+      for(var i =0; i<"{{bid_session.products.all|length}}";i++){
+      document.getElementById("countdown"+i).innerHTML = "EXPIRED";
+      }
+    }
+  }, 1000);
+
+</script>

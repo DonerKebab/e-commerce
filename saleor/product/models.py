@@ -154,6 +154,11 @@ class Product(models.Model, ItemRange, index.Indexed):
     long_description = RichTextField(pgettext_lazy('Product field', 'Long description'),
         default="<p></p>")
 
+    start_bid_price = PriceField(
+        pgettext_lazy('Product field', 'Start bid price'),
+        currency=settings.DEFAULT_CURRENCY, max_digits=12, decimal_places=2,
+        default=0)
+
     objects = ProductManager()
 
     search_fields = [

@@ -21,7 +21,7 @@
       margin-bottom: $global-margin;
     }
     &__quantity {
-      width: 17%;
+      width: 35%;
       float: left;
       @include media-breakpoint-down(sm) {
         width: 47%;
@@ -31,7 +31,7 @@
       }
     }
     &__button {
-      width: 80%;
+      width: 55%;
       float: right;
       margin-top: $global-margin * 2.5;
       button {

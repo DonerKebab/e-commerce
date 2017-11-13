@@ -42,8 +42,8 @@
                     Your order <strong> {{ order }} </strong> has been accepted.
                 {% endblocktrans %}
             </p>
-                {%trans "Our employee will contact you soon to confirm your order." context "Payment pending text" %}
-            <p></p>
+                
+            <p>{%trans "Our employee will contact you soon to confirm your order." context "Payment pending text" %}</p>
 
             {% include 'order/order-details.html' %}
         </div>

@@ -37,9 +37,6 @@
                 <a href="/" target="_blank" class="waves-effect waves-teal">
                   {% trans "Visit storefront" context "Dashboard top navigation action" %}
                 </a>
-                <a href="{% url "dashboard:styleguide" %}" target="_blank" class="waves-effect waves-teal">
-                  {% trans "Style guide" context "Dashboard top navigation action" %}
-                </a>
               </li>
               <li>
                 <a href="{% url 'account_logout' %}" class="waves-effect waves-teal">
@@ -104,6 +101,18 @@
                 <li class="{% block menu_location_class %}{% endblock %}">
                   <a href="{% url 'dashboard:product-stock-location-list' %}">
                   {% trans "Stock locations" context "Dashboard stock loactions list" %}
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="side-nav-section">
+              <p>
+                {% trans "Bid" context "Dashboard bid list" %}
+              </p>
+              <ul>
+                <li class="{% block menu_bid_class %}{% endblock %}">
+                  <a href="{% url 'dashboard:bid-list' %}">
+                    {% trans "Bids" context "Dashboard bids list" %}
                   </a>
                 </li>
               </ul>

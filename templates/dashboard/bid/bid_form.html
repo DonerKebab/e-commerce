@@ -1,0 +1,98 @@
+{% extends "dashboard/base.html" %}
+{% load i18n %}
+{% load materializecss %}
+{% load staticfiles %}
+
+{% block title %}
+  {% if bid.pk %}
+    {{ bid.name }}
+  {% else %}
+    {% trans "Add new bid"  context "Bid page title" %}
+  {% endif %} 
+  - {% trans "Bids" context "Bids list." %} - {{ block.super }}
+{% endblock %}
+
+{% block body_class %}body-bids{% endblock %}
+
+{% block menu_bid_class %}active{% endblock %}
+
+{% block header_menu %}
+  {% url "dashboard:bid-list" as url %}
+  {% include "dashboard/includes/_back-link.html" with url=url %}
+{% endblock %}
+
+
+
+{% block breadcrumbs %}
+  <ul class="breadcrumbs breadcrumbs--history">
+    <li>
+      <a href="{% url 'dashboard:bid-list' %}">
+        {% trans "Bids" context "Bids list." %}
+      </a>
+    </li>
+    <li class="back-mobile">
+      <a href="{% url 'dashboard:bid-list' %}">
+        <svg data-src="{% static "dashboard/images/arrow_left.svg" %}" fill="#fff" width="20px" height="20px" />
+      </a>
+    </li>
+    <li>
+      <span class="breadcrumbs--ellipsed-item">
+        {% if sale.pk %}
+          {{ sale }}
+        {% else %}
+          {% trans "Add new bid" context "Bid breadcrumbs" %}
+        {% endif %}
+      </span>
+    </li>
+  </ul>
+{% endblock %}
+
+
+{% block content %}
+  <div class="row">
+    <div class="col m12 l9">
+      <div class="card">
+        <form method="post" enctype="multipart/form-data" id="form-bids" novalidate>
+          <div class="card-content card-content-form">
+            {% csrf_token %}
+            <div class="row">
+              {{ form.name|materializecss }}
+            </div>
+            <div class="row">
+              <div class="col s12 m8">
+                <div class="row">
+                  {{ form.start_bid|materializecss }}
+                </div>
+              </div>
+              <div class="col s12 m4">
+                {{ form.end_bid|materializecss:"input-field s12" }}
+              </div>
+            </div>
+            <div class="row">
+              {{ form.products|materializecss }}
+            </div>
+          </div>
+
+          <div class="card-action right-align">
+            {% if bid.pk %}
+              <a href="{% url 'dashboard:bid-list' %}" class="btn btn-flat">
+                {% trans "Cancel" context "Dashboard cancel action" %}
+              </a>
+              <button type="submit" class="btn waves-effect waves-light">
+                {% trans "Update" context "Dashboard update action" %}
+              </button>
+            {% else %}
+              <a href="{% url 'dashboard:bid-list' %}" class="btn btn-flat">
+                {% trans "Cancel" context "Dashboard cancel action" %}
+              </a>
+              <button type="submit" class="btn waves-effect waves-light">
+                {% trans "Create" context "Dashboard create action" %}
+              </button>
+            {% endif %}
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col m12 l3 help-box"></div>
+  </div>
+{% endblock %}
