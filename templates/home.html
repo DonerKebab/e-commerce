@@ -46,6 +46,17 @@
           </div>
         </div>
       </div> -->
+      
+      {% if bid_session %}
+      <div class="home__featured">
+        <h2 class="text-center">{{bid_session.name}}</h2>
+        <div class="row">
+          {% include "bid/bid_item.html" %}
+        </div>
+      </div>
+
+      {% endif %}
+
       <div class="home__featured">
         <h2 class="text-center">{% trans "Featured products" context "Homepage title" %}</h2>
         <div class="row">

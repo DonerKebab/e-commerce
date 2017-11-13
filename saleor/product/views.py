@@ -15,6 +15,8 @@ from .utils import (products_with_details, products_for_cart,
                     handle_cart_form, get_availability,
                     get_product_images, get_variant_picker_data,
                     get_product_attributes_data, product_json_ld)
+from ..bid.models import BidSession
+from django.utils import timezone
 
 
 def product_details(request, slug, product_id, form=None):
@@ -67,9 +69,21 @@ def product_details(request, slug, product_id, form=None):
     product_attributes = get_product_attributes_data(product)
     show_variant_picker = all([v.attributes for v in product.variants.all()])
     json_ld_data = product_json_ld(product, availability, product_attributes)
+
+    # check if product is on bidding:
+    now =timezone.now()
+    bidding_session = BidSession.objects.filter(end_bid__gte=now,
+                                start_bid__lte=now).first()
+    if bidding_session:
+        is_bidding = (product.id in bidding_session.products.values_list('pk', flat=True).all())
+    else:
+        is_bidding = False
+
     return TemplateResponse(
         request, templates,
         {'is_visible': is_visible,
+        'is_bidding' : is_bidding,
+        'bidding_session' : bidding_session,
          'form': form,
          'availability': availability,
          'product': product,

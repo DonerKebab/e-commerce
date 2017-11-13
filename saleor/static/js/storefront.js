@@ -13,6 +13,7 @@ import passwordVisible from '../images/pass_visible.svg';
 import VariantPicker from './components/variantPicker/VariantPicker';
 import VariantPrice from './components/variantPicker/VariantPrice';
 import ProductSchema from './components/variantPicker/ProductSchema';
+import BidPicker from './components/bidPicker/BidPicker';
 
 let csrftoken = $.cookie('csrftoken');
 
@@ -221,7 +222,6 @@ let hash = window.location.hash;
 $('.nav-tabs a[href="' + hash + '"]').tab('show');
 
 // Variant Picker
-
 const variantPickerContainer = document.getElementById('variant-picker');
 const variantPriceContainer = document.getElementById('variant-price-component');
 
@@ -249,6 +249,68 @@ if (variantPickerContainer) {
     );
   }
 }
+
+const bidPickerContainer = document.getElementById('bid-picker'); //variantPickerContainer
+const bidVariantPriceContainer = document.getElementById('variant-price-component');
+
+if (bidPickerContainer) {
+  const variantPickerData = JSON.parse(bidPickerContainer.dataset.variantPickerData);
+  const end_bid = bidPickerContainer.dataset.endBid;
+  ReactDOM.render(
+    <BidPicker
+      onAddToCartError={onAddToCartError}
+      onAddToCartSuccess={onAddToCartSuccess}
+      store={variantPickerStore}
+      urlGetPrice={bidPickerContainer.dataset.getBidPriceAction}
+      urlBidPrice={bidPickerContainer.dataset.bidPriceAction}
+      urlAddCart={bidPickerContainer.dataset.urlAddCart}
+      variantAttributes={variantPickerData.variantAttributes}
+      variants={variantPickerData.variants}
+      end_bid={end_bid}
+      max_price={bidPickerContainer.dataset.maxPrice}
+      min_price={bidPickerContainer.dataset.minPrice}
+      product_id={bidPickerContainer.dataset.productId}
+      session_id={bidPickerContainer.dataset.sessionId}
+      onAddToCartSuccess={onAddToCartSuccess}
+      onAddToCartError={onAddToCartError}
+    />,
+    bidPickerContainer
+  );
+
+  if (bidVariantPriceContainer) {
+    ReactDOM.render(
+      <VariantPrice
+        availability={variantPickerData.availability}
+        store={variantPickerStore}
+      />,
+      bidVariantPriceContainer
+    );
+    
+  }
+}
+
+// // get newest bid price
+
+// let summaryLink = '/cart/summary/';
+// let $cartDropdown = $('.cart-dropdown');
+// let $cartIcon = $('.cart__icon');
+// let $addToCartError = $('.product__info__form-error small');
+
+// const onAddToCartSuccess = () => {
+//   $.get(summaryLink, (data) => {
+//     $cartDropdown.html(data);
+//     $addToCartError.html('');
+//     var newQunatity = $('.cart-dropdown__total').data('quantity');
+//     $('.badge').html(newQunatity).removeClass('empty');
+//     $cartDropdown.addClass('show');
+//     $cartIcon.addClass('hover');
+//     $cartDropdown.find('.cart-dropdown__list').scrollTop($cartDropdown.find('.cart-dropdown__list')[0].scrollHeight);
+//     setTimeout((e) => {
+//       $cartDropdown.removeClass('show');
+//       $cartIcon.removeClass('hover');
+//     }, 2500);
+//   });
+// };
 
 // Product Schema
 const productSchemaContainer = document.getElementById('product-schema-component');
@@ -370,3 +432,5 @@ if ($.cookie('alert') === 'true') {
 $closeMsg.on('click', (e) => {
   $removeProductSucces.addClass('hidden-xs-up');
 });
+
+
