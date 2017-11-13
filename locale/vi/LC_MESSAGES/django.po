@@ -880,6 +880,17 @@ msgctxt "Product field"
 msgid "seo keyword"
 msgstr "Từ khóa Seo"
 
+#: saleor/product/models.py:151
+msgctxt "Product field"
+msgid "seo description"
+msgstr "Mô tả seo"
+
+#: saleor/product/models.py:162
+msgctxt "Product field"
+msgid "Products related"
+msgstr "Sản phẩm liên quan"
+
+
 #: saleor/product/models.py:145
 msgctxt "Product model"
 msgid "product"
@@ -3733,6 +3744,11 @@ msgstr ""
 msgctxt "Homepage title"
 msgid "Featured products"
 msgstr "Sản phẩm bán chạy"
+
+#: templates/product/details.html:181
+msgctxt "Homepage title"
+msgid "Related products"
+msgstr "SẢN PHẨM THƯỜNG ĐƯỢC XEM CÙNG"
 
 #: templates/materializecssform/field.html:32
 #: templates/materializecssform/field.html:59

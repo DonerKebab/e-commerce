@@ -159,6 +159,8 @@ class Product(models.Model, ItemRange, index.Indexed):
         currency=settings.DEFAULT_CURRENCY, max_digits=12, decimal_places=2,
         default=0)
 
+    related_products = models.ManyToManyField("self", blank=True)
+
     objects = ProductManager()
 
     search_fields = [
