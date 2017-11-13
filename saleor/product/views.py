@@ -14,7 +14,8 @@ from .models import Category
 from .utils import (products_with_details, products_for_cart,
                     handle_cart_form, get_availability,
                     get_product_images, get_variant_picker_data,
-                    get_product_attributes_data, product_json_ld)
+                    get_product_attributes_data, product_json_ld,
+                    products_with_availability)
 from ..bid.models import BidSession
 from django.utils import timezone
 
@@ -51,6 +52,14 @@ def product_details(request, slug, product_id, form=None):
     """
     products = products_with_details(user=request.user)
     product = get_object_or_404(products, id=product_id)
+
+    products_realated_items = product.related_products.all()
+
+    if products_realated_items:
+        products_realated = products_with_availability(products_realated_items, discounts=[], local_currency=request.currency)
+    else:
+        products_realated = None
+
     if product.get_slug() != slug:
         return HttpResponsePermanentRedirect(product.get_absolute_url())
     today = datetime.date.today()
@@ -90,6 +99,7 @@ def product_details(request, slug, product_id, form=None):
          'product_attributes': product_attributes,
          'product_images': product_images,
          'show_variant_picker': show_variant_picker,
+         'products_realated': products_realated,
          'variant_picker_data': json.dumps(
              variant_picker_data, default=serialize_decimal),
          'json_ld_product_data': json.dumps(
