@@ -6,12 +6,12 @@
 
 {% block plain %}
 {% blocktrans context "Order confirmation email text" %}
-Hi!
+Xin chào !
 
-Thank you for your order. To see your payment details please visit:
+Cảm ơn bạn đã đặt hàng tại Siêu thị tiện ích 247. Để xem chi tiết đặt hàng bạn vui lòng truy cập tại đường link:
 {{ payment_url }}
 
-Sincerely,
-{{ site_name }}
+Trân trọng,
+Siêu thị tiện ích 247
 {% endblocktrans %}
 {% endblock %}
