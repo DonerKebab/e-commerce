@@ -56,17 +56,17 @@ msgstr "Số lượng"
 #: saleor/cart/forms.py:30
 msgctxt "Add to cart form error"
 msgid "Sorry. This product is currently not available."
-msgstr ""
+msgstr "Rất tiết, sản phẩm này hiện không tồn tại."
 
 #: saleor/cart/forms.py:34
 msgctxt "Add to cart form error"
 msgid "Sorry. This product is currently out of stock."
-msgstr ""
+msgstr "Rất tiết, sản phẩm này hiện đã hết hàng."
 
 #: saleor/cart/forms.py:38
 msgctxt "Add to cart form error"
 msgid "Oops. We could not find that product."
-msgstr ""
+msgstr "Rất tiết, chúng tôi không tìm thấy sản phẩm này."
 
 #: saleor/cart/forms.py:42
 #, python-format
@@ -3858,7 +3858,7 @@ msgstr ""
 #: templates/order/emails/confirm_email.subject.txt:2
 msgctxt "Order confirmation email subject"
 msgid "Order details"
-msgstr ""
+msgstr "Chi tiết đặt hàng tại sieuthitienich247.com"
 
 #: templates/order/order-details.html:14
 msgctxt "Order details address title"
