@@ -157,7 +157,7 @@ class Product(models.Model, ItemRange, index.Indexed):
     start_bid_price = PriceField(
         pgettext_lazy('Product field', 'Start bid price'),
         currency=settings.DEFAULT_CURRENCY, max_digits=12, decimal_places=2,
-        default=0)
+        default=Decimal(1000.00))
 
     related_products = models.ManyToManyField("self", blank=True)
 
