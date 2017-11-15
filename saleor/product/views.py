@@ -100,6 +100,7 @@ def product_details(request, slug, product_id, form=None):
          'product_images': product_images,
          'show_variant_picker': show_variant_picker,
          'products_realated': products_realated,
+         'is_authenticated': bool(request.user.is_authenticated),
          'variant_picker_data': json.dumps(
              variant_picker_data, default=serialize_decimal),
          'json_ld_product_data': json.dumps(

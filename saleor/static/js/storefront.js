@@ -273,6 +273,8 @@ if (bidPickerContainer) {
       session_id={bidPickerContainer.dataset.sessionId}
       onAddToCartSuccess={onAddToCartSuccess}
       onAddToCartError={onAddToCartError}
+      isAuthenticated={bidPickerContainer.dataset.isAuthenticated}
+      urlFbLogin={bidPickerContainer.dataset.urlFbLogin}
     />,
     bidPickerContainer
   );

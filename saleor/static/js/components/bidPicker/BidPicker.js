@@ -10,7 +10,7 @@ import Countdown from './Countdown';
 import * as queryString from 'query-string';
 
 @observer
-export default class  BidPicker extends Component {
+export default class BidPicker extends Component {
 
   static propTypes = {
     store: PropTypes.object.isRequired,
@@ -25,13 +25,14 @@ export default class  BidPicker extends Component {
     product_id: PropTypes.number.isRequired,
     session_id: PropTypes.number.isRequired,
     onAddToCartSuccess: PropTypes.func.isRequired,
-    onAddToCartError: PropTypes.func.isRequired
+    onAddToCartError: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+    urlFbLogin: PropTypes.string.isRequired,
   }
 
   constructor(props) {
     super(props);
     const { variants } = this.props;
-
     const variant = variants.filter(v => !!Object.keys(v.attributes).length)[0];
     const params = queryString.parse(location.search);
     let selection = {};
@@ -74,27 +75,32 @@ export default class  BidPicker extends Component {
   }
 
   handleBid = () => {
-    const { store } = this.props;
-    const bid_price  = parseInt(this.state.current_price) + 5000;
-    if (bid_price > parseInt(this.props.min_price) && bid_price < parseInt(this.props.max_price) && !store.isEmpty) {
-      $.ajax({
-        url: this.props.urlBidPrice,
-        method: 'post',
-        data: {
-          bid_price: bid_price,
-          product_id: this.props.product_id,
-          bid_session_id: this.props.session_id
-        },
-        success: (data) => {
-          if(data.message)
-          {
-            this.setState({message: data.message})
+
+    if (this.props.isAuthenticated == 'True') {
+      const { store } = this.props;
+      const bid_price  = parseInt(this.state.current_price) + 5000;
+      if (bid_price > parseInt(this.props.min_price) && bid_price < parseInt(this.props.max_price) && !store.isEmpty) {
+        $.ajax({
+          url: this.props.urlBidPrice,
+          method: 'post',
+          data: {
+            bid_price: bid_price,
+            product_id: this.props.product_id,
+            bid_session_id: this.props.session_id
+          },
+          success: (data) => {
+            if(data.message)
+            {
+              this.setState({message: data.message})
+            }
+            this.handleReloadPrice();
+          },
+          error: (response) => {
           }
-          this.handleReloadPrice();
-        },
-        error: (response) => {
-        }
-      });
+        });
+      }
+    } else {
+      window.open(this.props.urlFbLogin, "_self");
     }
   }
 
@@ -149,7 +155,6 @@ export default class  BidPicker extends Component {
 
   getNewestPrice = () => {
     setInterval(this.handleReloadPrice, 2000);  
-    
   }
 
   handleAttributeChange = (attrId, valueId) => {
@@ -271,7 +276,7 @@ export default class  BidPicker extends Component {
 
     let noti = <div></div>;
     if(this.state.current_winner) {
-      noti = <div className="alert alert-info">{this.state.message}</div>
+      noti = <div className="alert alert-info">Bạn đang là người giữ giá thầu cao nhất của phiên này.</div>
     }
     
 

@@ -14,7 +14,8 @@ from .models import ProductBidHistory, BidSession
 
 def get_newest_bid_price(request, bid_session_id, product_id):
 
-    bid_history = ProductBidHistory.objects.filter(product_id=product_id, session_id=bid_session_id).order_by("-bid_price").first()
+    bid_history = ProductBidHistory.objects.filter(product_id=product_id, session_id=bid_session_id
+        , bid_time__lte=timezone.now()).order_by("-bid_price").first()
     product = get_object_or_404(Product, pk=product_id)
     bid_session = get_object_or_404(BidSession, pk=bid_session_id)
 
@@ -36,15 +37,10 @@ def get_newest_bid_price(request, bid_session_id, product_id):
     else:
         bid_info['isEnd'] = False
 
-
     return JsonResponse(bid_info, status=200)
 
 
 def bid_product(request):
-
-    # check if user is authenticated
-    if not request.user.is_authenticated:
-        return redirect('social:begin', 'facebook')
 
     if not request.method == 'POST':
         return redirect(reverse(
@@ -80,9 +76,9 @@ def bid_product(request):
     pbh = ProductBidHistory.objects.create(product_id=product_id, session_id=bid_session_id, bid_price=int(bid_price)
         ,user_id=request.user.id, user_display_name=user_displayname)    
 
-    if int(product.price.net) - int(bid_price) <= 5000:
-        bid_session.end_bid = timezone.now()
-        bid_session.save()
+    # if int(product.price.net) - int(bid_price) <= 5000:
+    #     bid_session.end_bid = timezone.now()
+    #     bid_session.save()
     return redirect(reverse(
             'product:details',
             kwargs={'product_id': product_id, 'slug': product.get_slug()}))
