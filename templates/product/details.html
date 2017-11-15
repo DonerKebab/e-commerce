@@ -116,7 +116,7 @@
       {% endif %}
 
       {% if is_bidding %}
-        <div id="bid-picker" data-variant-picker-data="{{ variant_picker_data }}" data-get-bid-price-action="{% url 'bid:get-bid-price' bid_session_id=bidding_session.id product_id=product.pk %}" data-bid-price-action="{% url 'bid:bid-price'%}" data-end-bid="{{bidding_session.end_bid.isoformat}}" data-product-id="{{product.id}}" data-url-add-cart="{% url 'product:add-to-cart' product_id=product.pk slug=product.get_slug %}"
+        <div id="bid-picker" data-variant-picker-data="{{ variant_picker_data }}" data-get-bid-price-action="{% url 'bid:get-bid-price' bid_session_id=bidding_session.id product_id=product.pk %}" data-bid-price-action="{% url 'bid:bid-price'%}" data-end-bid="{{bidding_session.end_bid.isoformat}}" data-product-id="{{product.id}}" data-url-add-cart="{% url 'product:add-to-cart' product_id=product.pk slug=product.get_slug %}" data-is-authenticated="{{is_authenticated }}" data-url-fb-login={% url 'social:begin' 'facebook' %}
         data-session-id="{{bidding_session.id}}" data-max-price="{{product.price.net}}" data-min-price="{{product.start_bid_price.net}}"></div>
       {% else %}
         {% if is_visible and product.is_in_stock %}
@@ -170,7 +170,7 @@
   </div>
   <hr>
   <div class="row product">
-    <div class="hidden-md-down">
+    <div class="col-md-12">
       {% autoescape off %}{{ product.long_description }}{% endautoescape %} 
     </div>
     

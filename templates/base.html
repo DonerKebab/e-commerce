@@ -137,14 +137,11 @@
                       {% url 'home' as home_url %}
                       <ul class="nav navbar-nav{% if request.get_full_path == home_url %} no-border{% endif %}" >
                         {% for category in categories %}
-                          {% with num_of_child=category.get_visible_children_category|length %}
-
                               <li class="nav-item">
                                 <a class="nav-link" href="{{ category.get_absolute_url }}">
                                     {{ category }}
                                 </a>
                               </li>
-                          {% endwith %}
                         {% endfor %}
                       </ul>
                     </nav>
@@ -230,7 +227,9 @@
                       </ul>
                     </div>
                     <div class="col-md-3 col-sm-12">
-
+                      <a target="_blank" rel="noopener" class="social-footer" href="https://www.facebook.com/Si%C3%AAu-th%E1%BB%8B-ti%E1%BB%87n-%C3%ADch-247-328407340962911/">
+                        <svg data-src="{% static "images/facebook.svg" %}" width="45px" height="45px"/>
+                      </a>
                     </div>
                   </div>
                 </div>
