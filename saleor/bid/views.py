@@ -41,7 +41,6 @@ def get_newest_bid_price(request, bid_session_id, product_id):
 
 
 def bid_product(request):
-
     if not request.method == 'POST':
         return redirect(reverse(
             'product:details',
@@ -56,6 +55,7 @@ def bid_product(request):
     product = get_object_or_404(Product, id=product_id)
     # check if bid session is expiered or has not ready yet
     bid_session = get_object_or_404(BidSession, id=bid_session_id)
+
     if bid_session.end_bid < timezone.now() or bid_session.start_bid > timezone.now():
         return redirect(reverse(
             'product:details',
@@ -63,7 +63,8 @@ def bid_product(request):
 
     
     # check if bid price is valid: not under current price, if bidding user is current winner user
-    current_bid_winner = ProductBidHistory.objects.filter(product_id=product_id, session_id=bid_session_id).order_by('-bid_price').first()
+    current_bid_winner = ProductBidHistory.objects.filter(product_id=product_id, session_id=bid_session_id,
+        bid_time__lte=timezone.now()).order_by('-bid_price').first()
     
     if current_bid_winner:
         if(current_bid_winner.user_id == user.id):

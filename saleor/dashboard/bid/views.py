@@ -37,7 +37,6 @@ def bid_edit(request, pk=None):
                 bid_history = create_bid_history(instance, product)
                 if bid_history:
                     rs = ProductBidHistory.objects.bulk_create(bid_history) 
-                    print(rs)
         msg = pgettext_lazy(
             'Bid message', 'Updated bid') if pk else pgettext_lazy(
                 'Bid message', 'Added bid')
