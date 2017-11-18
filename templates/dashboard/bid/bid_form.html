@@ -21,6 +21,22 @@
   {% include "dashboard/includes/_back-link.html" with url=url %}
 {% endblock %}
 
+{% block header_extra %}
+  {% if bid.pk %}
+    <a class="dropdown-button right" href="#" data-activates="bid-delete"
+    data-constrainwidth="false">
+      <svg data-src="{% static "dashboard/images/more_vert.svg" %}" height="24" width="24" />
+    </a>
+    <ul id="bid-delete" class="dropdown-content">
+      <li>
+        <a class="modal-trigger-custom" href="#base-modal" data-href="{% url 'dashboard:bid-delete' pk=bid.pk %}">
+          {% trans "Remove bid" context "Bid action" %}
+        </a>
+      </li>
+    </ul>
+  {% endif %}
+{% endblock %}
+
 
 
 {% block breadcrumbs %}
@@ -37,8 +53,8 @@
     </li>
     <li>
       <span class="breadcrumbs--ellipsed-item">
-        {% if sale.pk %}
-          {{ sale }}
+        {% if bid.pk %}
+          {{ bid }}
         {% else %}
           {% trans "Add new bid" context "Bid breadcrumbs" %}
         {% endif %}
@@ -81,6 +97,9 @@
               <button type="submit" class="btn waves-effect waves-light">
                 {% trans "Update" context "Dashboard update action" %}
               </button>
+               <a href="{% url 'dashboard:bid-clone' bid.pk %}" class="btn btn-flat">
+                Tạo phiên tiếp 
+              </a>
             {% else %}
               <a href="{% url 'dashboard:bid-list' %}" class="btn btn-flat">
                 {% trans "Cancel" context "Dashboard cancel action" %}

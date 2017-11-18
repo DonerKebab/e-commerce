@@ -1,0 +1,21 @@
+{% load i18n %}
+
+<form action="{% url "dashboard:bid-delete" pk=bid_session.pk %}" method="post" novalidate>
+  {% csrf_token %}
+  <div class="modal-content">
+    <h5>
+      {% trans "Are you sure?" context "Dashboard confirmation modal" %}
+    </h5>
+    <p>
+        Bạn có thực sự muốn xóa <strong>{{ bid_session }}</strong>.
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="modal-action btn-flat">
+      {% trans "Delete" context "Dashboard delete action" %}
+    </button>
+    <a href="#!" class="modal-action modal-close btn-flat">
+      {% trans "Cancel" context "Dashboard cancel action" %}
+    </a>
+  </div>
+</form>
