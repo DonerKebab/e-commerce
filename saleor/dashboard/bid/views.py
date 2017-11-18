@@ -15,9 +15,7 @@ from . import forms
 
 @staff_member_required
 def bid_list(request):
-    bids = BidSession.objects.prefetch_related('products')
-    for bid in bids:
-        print(bid.products.all())
+    bids = BidSession.objects.filter(end_bid__gte=timezone.now()).prefetch_related('products')
     ctx = {'bids': bids}
     return TemplateResponse(request, 'dashboard/bid/bid_list.html', ctx)
 
