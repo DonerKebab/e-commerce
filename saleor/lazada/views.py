@@ -43,6 +43,7 @@ def sync_orders_from_lazada(orders):
             if order_obj.status != order['Statuses'][0]:
                 order_obj.status = order['Statuses'][0]
                 order_obj.save()
+                
         else:
             is_order_exists = False
             formated_price = Decimal(order['Price'].replace(',', ''))
