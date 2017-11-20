@@ -43,6 +43,40 @@ def bid_edit(request, pk=None):
     ctx = {'bid': instance, 'form': form}
     return TemplateResponse(request, 'dashboard/bid/bid_form.html', ctx)
 
+@staff_member_required
+def clone_bid(request, pk=None):
+    clone_object = BidSession()
+    if pk:
+        instance = get_object_or_404(BidSession, pk=pk)
+        bid_time = (instance.end_bid - instance.start_bid).total_seconds()
+        # start next bid session in 120 seconds 
+        next_start_bid = instance.end_bid + timezone.timedelta(seconds=120)
+        next_end_bid = next_start_bid + timezone.timedelta(seconds=bid_time)
+        clone_object = BidSession(name=instance.name, start_bid=next_start_bid, end_bid=next_end_bid)
+        clone_object.save()
+        for product in instance.products.all():
+            clone_object.products.add(product)
+
+        for product in clone_object.products.all():
+                bid_history = create_bid_history(clone_object, product)
+                if bid_history:
+                    rs = ProductBidHistory.objects.bulk_create(bid_history)
+        messages.success(request, 'Clone đấu giá thành công')
+    return redirect('dashboard:bid-update', pk=clone_object.id)
+
+
+@staff_member_required
+def bid_delete(request, pk):
+    bid_session = get_object_or_404(BidSession, pk=pk)
+    if request.method == 'POST':
+        bid_session.delete()
+        messages.success(
+            request,
+            pgettext_lazy('Dashboard message', 'Deleted bid session %s') % bid_session)
+        return redirect('dashboard:bid-list')
+    return TemplateResponse(
+        request, 'dashboard/bid/bid_modal_confirm_delete.html',
+        {'bid_session': bid_session})
 
 def create_bid_history(bid, product):
     bid_history = []
@@ -66,3 +100,5 @@ def create_bid_history(bid, product):
             , bid_price=bid_price, bid_time=bid_time, user_display_name=user_display_name))
 
     return bid_history
+
+

@@ -16,8 +16,9 @@
 {% endblock %}
 
 {% block content %}
-  {% if orders_all %}
+ 
     {% include "dashboard/includes/_status_filters.html" %}
+   {% if orders_all %}
     {% if object_list %}
       <div class="card">
         {% include "dashboard/includes/_orders_table.html" with orders=object_list %}
