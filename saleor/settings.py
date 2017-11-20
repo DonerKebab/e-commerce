@@ -35,7 +35,7 @@ if os.environ.get('REDIS_URL'):
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL', 'postgres://saleor:saleor@db/saleor'),
+        default='postgres://saleor:saleor@localhost:5432/saleor',
         conn_max_age=600)}
 
 
@@ -125,7 +125,8 @@ TEMPLATES = [{
         'string_if_invalid': '<< MISSING VARIABLE "%s" >>' if DEBUG else ''}}]
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ.get('SECRET_KEY', 'Hngnouhp27!!!@')
+# SECRET_KEY = os.environ.get('SECRET_KEY') # production env
+SECRET_KEY = 'Hngnouhp27!!!@' # dev env
 
 MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -477,5 +478,5 @@ CKEDITOR_CONFIGS = {
 }
 
 LAZADA_ENDPOINT_URI = 'https://api.sellercenter.lazada.vn/'
-LAZADA_USER_ID = os.environ.get('LAZADA_USER_ID')
+LAZADA_USER_ID = os.environ.get('LAZADA_USER_ID', 'sieuthitienich247.com@gmail.com')
 LAZADA_API_KEY = os.environ.get('LAZADA_API_KEY')

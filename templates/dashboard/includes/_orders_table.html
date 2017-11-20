@@ -13,7 +13,7 @@
           {% trans "Order status" context "Orders table header" %}
         </th>
         <th>
-          {% trans "Lazada order id" context "Orders table header" %}
+          {% trans "Payment status" context "Orders table header" %}
         </th>
         <th>
           {% trans "Customer" context "Orders table header" %}
@@ -36,7 +36,7 @@
             {% render_status order.status order.get_status_display %}
           </td>
           <td>
-            {{ order.lazada_order_id }}
+            {% render_status order.get_last_payment_status order.get_last_payment_status_display %}
           </td>
           {% trans "Guest" context "Anonymous user account value" as guest %}
           <td>

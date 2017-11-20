@@ -38,10 +38,32 @@ def get_timestamp():
 
 def generate_signature(parameters):
     concatenated = urlencode(sorted(parameters.items())).encode('utf-8')
-    return HMAC(b'aRsLXa5EzE8ycwEpfxw6xfQJcpfuS3O0FSGi9E_znajmrIh1Ua45x1m0', concatenated, sha256).hexdigest()
+    return HMAC(b'ID5m9QghHJV5Xsdi7SJIOgVevtWk8mFr_SMfBIPdAj1pWxbCYLBPVKD8', concatenated, sha256).hexdigest()
 
 def get_orders(status):
 
+    parameters = {
+      'Action': ENDPOINT['GetOrders'],
+      'Format':'json',
+      'Timestamp': get_timestamp(),
+      'UserID': settings.LAZADA_USER_ID,
+      'Version': '1.0',
+      'Status': status,
+      'Limit': 500
+    }
+
+    parameters['Signature'] = generate_signature(parameters)
+
+    res = requests.get(settings.LAZADA_ENDPOINT_URI, parameters)
+
+    return json.loads(res.text)
+
+
+def get_pending_orders():
+    pending_orders = get_orders(ORDER_STATUS['pending'])
+    return pending_orders['SuccessResponse']['Body']['Orders']
+
+def get_all_orders():
     parameters = {
       'Action': ENDPOINT['GetOrders'],
       'Format':'json',
@@ -56,36 +78,9 @@ def get_orders(status):
     parameters['Signature'] = generate_signature(parameters)
 
     res = requests.get(settings.LAZADA_ENDPOINT_URI, parameters)
+
     return json.loads(res.text)
 
-
-def get_pending_orders():
-    pending_orders = get_orders(ORDER_STATUS['pending'])
-    return pending_orders['SuccessResponse']['Body']['Orders']
-
-def get_canceled_orders():
-    canceled_orders = get_orders(ORDER_STATUS['canceled'])
-    return canceled_orders['SuccessResponse']['Body']['Orders']
-
-def get_ready_orders():
-    ready_to_ship_orders = get_orders(ORDER_STATUS['ready_to_ship'])
-    return ready_to_ship_orders['SuccessResponse']['Body']['Orders']
-
-def get_delivered_orders():
-    delivered_orders = get_orders(ORDER_STATUS['delivered'])
-    return delivered_orders['SuccessResponse']['Body']['Orders']
-
-def get_returned_orders():
-    returned_orders = get_orders(ORDER_STATUS['returned'])
-    return returned_orders['SuccessResponse']['Body']['Orders']
-
-def get_shipped_orders():
-    shipped_orders = get_orders(ORDER_STATUS['shipped'])
-    return shipped_orders['SuccessResponse']['Body']['Orders']
-
-def get_failed_orders():
-    failed_orders = get_orders(ORDER_STATUS['failed'])
-    return failed_orders['SuccessResponse']['Body']['Orders']
 
 def get_order_items(order_id):
     parameters = {
