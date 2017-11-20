@@ -35,7 +35,7 @@ if os.environ.get('REDIS_URL'):
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://tienich247:heomup@localhost:5432/tienich247',
+        default=os.environ.get('DATABASE_URL', 'postgres://saleor:saleor@db/saleor'),
         conn_max_age=600)}
 
 
@@ -79,7 +79,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     ('assets', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'assets')),
     ('images', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'images')),
-    ('dashboard', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'dashboard'))
+    ('dashboard', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'dashboard')),
+    ('invoices', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'invoices')),
 ]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -124,8 +125,7 @@ TEMPLATES = [{
         'string_if_invalid': '<< MISSING VARIABLE "%s" >>' if DEBUG else ''}}]
 
 # Make this unique, and don't share it with anybody.
-# SECRET_KEY = os.environ.get('SECRET_KEY') # production env
-SECRET_KEY = 'Hngnouhp27!!!@' # dev env
+SECRET_KEY = os.environ.get('SECRET_KEY', 'Hngnouhp27!!!@')
 
 MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -475,3 +475,7 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
+
+LAZADA_ENDPOINT_URI = 'https://api.sellercenter.lazada.vn/'
+LAZADA_USER_ID = os.environ.get('LAZADA_USER_ID')
+LAZADA_API_KEY = os.environ.get('LAZADA_API_KEY')

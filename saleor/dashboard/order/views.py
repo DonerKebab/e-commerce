@@ -27,7 +27,7 @@ from .forms import (CancelGroupForm, CancelItemsForm, CancelOrderForm,
 def order_list(request):
     orders_all = Order.objects.prefetch_related(
         'groups', 'payments', 'groups__items', 'user').all()
-    active_status = request.GET.get('status')
+    active_status = request.GET.get('status', 'pending')
     if active_status:
         orders = orders_all.filter(status=active_status)
     else:
@@ -72,7 +72,6 @@ def order_details(request, order_pk):
            'can_release': can_release, 'can_refund': can_refund,
            'balance': balance}
 
-    print(ctx)
     return TemplateResponse(request, 'dashboard/order/detail.html', ctx)
 
 

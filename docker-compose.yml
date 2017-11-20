@@ -1,16 +1,5 @@
 version: '2'
 services:
-  nginx:
-    image: nginx:latest
-    container_name: ng01
-    ports:
-      - "80:80"
-    volumes:
-      - ./config/nginx:/etc/nginx/conf.d
-      - ./static:/static
-      - ./media:/media
-    depends_on:
-      - web
   db:
     image: postgres
     environment:
@@ -28,19 +17,21 @@ services:
       - '127.0.0.1:9200:9200'
   web:
     build: .
-    command: uwsgi --ini /app/saleor/wsgi/uwsgi.ini
+    command: python manage.py runserver 0.0.0.0:8000
     environment:
       - DATABASE_URL=postgres://saleor:saleor@db/saleor
       - DEFAULT_FROM_EMAIL=noreply@example.com
       - ELASTICSEARCH_URL=http://search:9200/
       - REDIS_URL=redis://redis:6379/0
-      - DEBUG=False
+      - DEBUG=True
+      - LAZADA_API_KEY=ID5m9QghHJV5Xsdi7SJIOgVevtWk8mFr_SMfBIPdAj1pWxbCYLBPVKD8
+      - LAZADA_USER_ID=sieuthitienich247.com@gmail.com
     depends_on:
       - db
       - redis
       - search
-    expose:
-      - "8000"
+    ports:
+      - "8000:8000"
     volumes:
       - .:/app:Z
       - ./static:/static

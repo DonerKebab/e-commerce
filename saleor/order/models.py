@@ -45,6 +45,13 @@ class OrderManager(models.Manager):
         order.save()
 
 
+
+@python_2_unicode_compatible
+class SaleChanel(models.Model):
+    name = models.CharField(
+        verbose_name=pgettext_lazy('SaleChanel field', 'Chanel name'),
+        max_length=255, default='', blank=True)
+
 @python_2_unicode_compatible
 class Order(models.Model, ItemSet, index.Indexed):
     status = models.CharField(
@@ -92,6 +99,12 @@ class Order(models.Model, ItemSet, index.Indexed):
     discount_name = models.CharField(
         verbose_name=pgettext_lazy('Order field', 'discount name'),
         max_length=255, default='', blank=True)
+
+    lazada_order_id = models.CharField(
+        verbose_name=pgettext_lazy('Order field', 'Lazada order id'),
+        max_length=255, default='', blank=True)
+
+    sale_chanel = models.ForeignKey(SaleChanel, max_length=255, default='', blank=True, null=True)
 
     objects = OrderManager()
 
@@ -325,7 +338,7 @@ class OrderedItemManager(models.Manager):
 @python_2_unicode_compatible
 class OrderedItem(models.Model, ItemLine):
     delivery_group = models.ForeignKey(
-        DeliveryGroup, related_name='items', editable=False,
+        DeliveryGroup, related_name='items', editable=False, null=True, blank=True,
         verbose_name=pgettext_lazy('Ordered item field', 'delivery group'))
     product = models.ForeignKey(
         Product, blank=True, null=True, related_name='+',
@@ -350,7 +363,8 @@ class OrderedItem(models.Model, ItemLine):
     unit_price_gross = models.DecimalField(
         pgettext_lazy('Ordered item field', 'unit price (gross)'),
         max_digits=12, decimal_places=4)
-
+    lazada_order_item_id = models.CharField(max_length=128, blank=True, null=True)
+    lazada_tracking_number = models.CharField(max_length=128, blank=True, null=True)
     objects = OrderedItemManager()
 
     class Meta:

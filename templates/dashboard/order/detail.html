@@ -334,9 +334,9 @@
               </tbody>
             </table>
           </div>
-          {% if group.can_ship or group.can_cancel %}
+          <!-- {% if group.can_ship or group.can_cancel %} -->
             <div class="data-table-action">
-              {% if group.can_ship %}
+              <!-- {% if group.can_ship %}
                 <a href="#base-modal" data-href="{% url 'dashboard:ship-delivery-group' order_pk=order.pk group_pk=group.pk %}" class="btn btn-flat modal-trigger-custom">
                   {% trans "Dispatch" context "Shipment group table action" %}
                 </a>
@@ -345,9 +345,12 @@
                 <a href="#base-modal" data-href="{% url 'dashboard:cancel-delivery-group' order_pk=order.pk group_pk=group.pk %}" class="btn btn-flat modal-trigger-custom" title="{% trans "Cancel group" context "Shipment group table action" %}">
                   {% trans "Cancel this shipment" context "Shipment group table action" %}
                 </a>
-              {% endif %}
+              {% endif %} -->
+               <a href="{% url 'lazada:order-ready-to-ship' order.pk %}" class="btn btn-flat">
+                Sẵn sàng giao hàng
+              </a>
             </div>
-          {% else %}
+          <!-- {% else %}
             {% if group.tracking_number %}
               <div class="card-action">
                 {% blocktrans trimmed with tracking=group.tracking_number context "Shipment group table text" %}
@@ -355,7 +358,7 @@
                 {% endblocktrans %}
               </div>
             {% endif %}
-          {% endif %}
+          {% endif %} -->
         </div>
       {% endfor %}
       <div class="card" id="order-totals">
