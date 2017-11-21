@@ -47,7 +47,7 @@ def sync_orders_from_lazada(orders):
         else:
             is_order_exists = False
             formated_price = Decimal(order['Price'].replace(',', ''))
-            order_obj = Order(created=order['CreatedAt'] + '.069225+00', user=user, billing_address=billing_address,
+            order_obj = Order(created=order['CreatedAt'] + '.069225+07', user=user, billing_address=billing_address,
                 user_email=user.email, token=order['OrderNumber'], total_net=formated_price, total_tax=Decimal(0.00),
                 lazada_order_id=order['OrderId'], status=order['Statuses'][0])
             order_obj.save()
