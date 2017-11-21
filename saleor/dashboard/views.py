@@ -16,7 +16,7 @@ def staff_member_required(f):
 
 @staff_member_required
 def index(request):
-    orders_to_ship = Order.objects.filter(status=OrderStatus.FULLY_PAID)
+    orders_to_ship = Order.objects.filter(status=OrderStatus.NEW)
     orders_to_ship = (orders_to_ship
                       .select_related('user')
                       .prefetch_related('groups', 'groups__items', 'payments'))
