@@ -100,9 +100,8 @@
           <div id="variant-price-component"></div>
         {% else %}
           <h2 class="product__info__price">
-            <span>Giá bán lẻ: {% price_range availability.price_range %}</span>
             {% if availability.discount %}
-              <small class="product__info__price__undiscounted">{% gross availability.price_range_undiscounted.min_price html=True %}</small>
+              <small class="product__info__price__undiscounted"> {% gross availability.price_range_undiscounted.min_price html=True %}</small>
             {% endif %}
             {% if availability.price_range_local_currency %}
               <br>

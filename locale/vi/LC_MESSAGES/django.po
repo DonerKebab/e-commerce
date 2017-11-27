@@ -1703,7 +1703,7 @@ msgstr ""
 #: templates/dashboard/order/detail.html:373
 msgctxt "Order subtotal"
 msgid "Subtotal"
-msgstr "Tổng"
+msgstr "Tạm tính"
 
 #: templates/cart-dropdown.html:35
 msgctxt "Cart dropdown text"
@@ -1849,7 +1849,7 @@ msgstr ""
 #: templates/checkout/payment.html:13
 msgctxt "Checkout payment primary action"
 msgid "Place order"
-msgstr "Đặt hàng"
+msgstr "Đơn hàng"
 
 #: templates/checkout/shipping_address.html:8
 #: templates/checkout/shipping_method.html:7
@@ -2627,7 +2627,7 @@ msgstr ""
 #: templates/dashboard/order/detail.html:226
 msgctxt ""
 msgid "Billing address"
-msgstr ""
+msgstr "Địa chỉ nhận hàng"
 
 #: templates/dashboard/order/detail.html:32
 msgctxt "Order detail action"
@@ -2652,23 +2652,23 @@ msgstr ""
 #: templates/dashboard/order/detail.html:95
 msgctxt "Order summary title"
 msgid "Order summary"
-msgstr ""
+msgstr "Chi tiêt đơn hàng"
 
 #: templates/dashboard/order/detail.html:100
 #: templates/dashboard/search/results.html:85
 msgctxt "Dashboard customer"
 msgid "Customer"
-msgstr ""
+msgstr "Khách hàng"
 
 #: templates/dashboard/order/detail.html:112
 msgctxt "Order summary card header"
 msgid "Order status"
-msgstr ""
+msgstr "Trạng thái đơn hàng"
 
 #: templates/dashboard/order/detail.html:120
 msgctxt "Order summary card header"
 msgid "Payment status"
-msgstr ""
+msgstr "Trạng thái thanh toán"
 
 #: templates/dashboard/order/detail.html:126
 msgctxt "Payment status not available"
@@ -2724,7 +2724,7 @@ msgstr ""
 #: templates/dashboard/order/detail.html:256
 msgctxt "Shipment group table header"
 msgid "Item"
-msgstr ""
+msgstr "Sản phẩm"
 
 #: templates/dashboard/order/detail.html:259
 msgctxt "Shipment group table header"
@@ -2734,7 +2734,7 @@ msgstr ""
 #: templates/dashboard/order/detail.html:262
 msgctxt "Shipment group table header"
 msgid "Price"
-msgstr ""
+msgstr "Đơn giá"
 
 #: templates/dashboard/order/detail.html:265
 msgctxt "Shipment group table header"
@@ -2798,7 +2798,7 @@ msgstr ""
 #: templates/dashboard/order/detail.html:363
 msgctxt "Order totals header"
 msgid "Grand total"
-msgstr ""
+msgstr "Tổng"
 
 #: templates/dashboard/order/detail.html:381
 msgctxt "Order totals header"
@@ -2820,7 +2820,7 @@ msgstr ""
 #: templates/dashboard/order/detail.html:417
 msgctxt "Order notes card title"
 msgid "Order notes"
-msgstr ""
+msgstr "Lưu ý của khách hàng"
 
 #: templates/dashboard/order/detail.html:430
 msgctxt "Empty order notes card message"
