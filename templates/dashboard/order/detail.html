@@ -92,95 +92,8 @@
     </div>
   </div>
   <div class="row tab-content" id="order-details">
-    <div class="col s12 l4 switch-two-columns">
+    <div class="col s12">
       <div class="card">
-        <div class="card-content">
-          <span class="card-title">
-            {% trans "Order summary" context "Order summary title" %}
-          </span>
-          <div class="row">
-            <div class="col s12 m4 l12">
-              <h6>
-                {% trans "Customer" context "Dashboard customer" %}
-              </h6>
-              <p>
-                {% if order.user %}
-                  <a href="{% url "dashboard:customer-details" pk=order.user.pk %}">{{ order.user }}</a>
-                {% else %}
-                  {% trans "Guest" context "Anonymous user account value" %}
-                {% endif %}
-              </p>
-            </div>
-            <div class="col s12 m4 l12">
-              <h6>
-                {% trans "Order status" context "Order summary card header" %}
-              </h6>
-              <p>
-                {% render_status order.status order.get_status_display %}
-              </p>
-            </div>
-            <div class="col s12 m4 l12">
-              <h6>
-                {% trans "Payment status" context "Order summary card header" %}
-              </h6>
-              <p>
-                {% if payment %}
-                  {% render_status payment.status payment.get_status_display %}
-                {% else %}
-                  {% trans "N/A" context "Payment status not available" %}
-                {% endif %}
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="data-table-container">
-          <table class="data-table bordered highlight">
-            <tfoot>
-              <tr>
-                <td>
-                  <strong>
-                    {% trans "Outstanding balance" context "Order summary card header" %}
-                  </strong>
-                </td>
-                <td class="right-align">
-                  <strong>
-                    {% gross balance html=True %}
-                  </strong>
-                </td>
-              </tr>
-            </tfoot>
-            <tbody>
-              <tr>
-                <td>
-                  {% trans "Order total" context "Order summary card header" %}
-                </td>
-                <td class="right-align">
-                  {% gross order.get_total html=True %}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  {% trans "Preauthorized amount" context "Order summary card header" %}
-                </td>
-                <td class="right-align">
-                  {% if preauthorized %}
-                    {% gross preauthorized html=True %}
-                  {% else %}
-                    {% trans "N/A" context "Preauthorized amount not available" %}
-                  {% endif %}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  {% trans "Captured amount" context "Order summary card header" %}
-                </td>
-                <td class="right-align">
-                  {% gross captured html=True %}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
         {% if can_capture or can_refund or can_release %}
           <div class="data-table-action">
             {% if can_capture %}
@@ -205,7 +118,7 @@
       </div>
       {% with order.shipping_address as address %}
         <div class="row">
-          {% if address %}
+ <!--          {% if address %}
             <div class="col s12 m6 l12 p6">
               <div class="card">
                 <div class="card-content">
@@ -221,33 +134,33 @@
                 </div>
               </div>
             </div>
-          {% endif %}
-          <div class="col s12 {% if address %}m6{% else %}m12{% endif %} l12 p6">
-            <div class="card">
-              <div class="card-content">
-                {% with order.billing_address as address %}
-                  <span class="card-title black-text">
-                    {% trans "Billing address" context "" %}
-                  </span>
-                  {% include 'dashboard/includes/_address.html' with address=address only %}
-                {% endwith %}
-              </div>
-              <div class="card-action">
-                <a href="{% url "dashboard:address-edit" order_pk=order.pk address_type="billing" %}" class="btn btn-flat">
-                  {% trans "Edit" context "Dashboard edit action" %}</a>
-              </div>
+          {% endif %} -->
+        <div class="col s12 {% if address %}m12{% else %}m12{% endif %} l12 p6">
+          <div class="card">
+            <div class="card-content">
+              {% with order.billing_address as address %}
+                <span class="card-title black-text">
+                  {% trans "Địa chỉ nhận hàng" context "" %}
+                </span>
+                {% include 'dashboard/includes/_address.html' with address=address only %}
+              {% endwith %}
+            </div>
+            <div class="card-action">
+              <a href="{% url "dashboard:address-edit" order_pk=order.pk address_type="billing" %}" class="btn btn-flat">
+                {% trans "Edit" context "Dashboard edit action" %}</a>
             </div>
           </div>
         </div>
+      </div>
       {% endwith %}
     </div>
-    <div class="col s12 l8 switch-two-columns">
+    <div class="col s12 l12 switch-two-columns">
       {% for group in groups %}
         <div class="card shipment-table">
           <div class="data-table-header">
             <h5 class="data-table-title">
               {% blocktrans trimmed with shipment=group.id context "Shipment group table title"  %}
-                Shipment #{{ shipment }}
+                Đơn hàng #{{ shipment }}
               {% endblocktrans %}
             </h5>
             {% render_status group.status group.get_status_display %}
@@ -273,20 +186,7 @@
                   </th>
                 </tr>
               </thead>
-              <tfoot>
-                {% if group.shipping_price.gross or group.is_shipping_required %}
-                  <tr>
-                    <td colspan="4">
-                      {% blocktrans trimmed with group_shipping_method_name=group.shipping_method_name context "Shipment group table item column data" %}
-                        Shipping ({{ group_shipping_method_name }})
-                      {% endblocktrans %}
-                    </td>
-                    <td class="right-align">
-                      {% gross group.shipping_price html=True %}
-                    </td>
-                  </tr>
-                {% endif %}
-              </tfoot>
+              
                 <tbody>
                   {% for item in group.items.all %}
                     <tr>
@@ -385,14 +285,6 @@
                   {% gross order.get_subtotal_without_voucher html=True %}
                 </td>
               </tr>
-              <tr>
-                <td>
-                  {% trans "Shipping" context "Order totals header" %}
-                </td>
-                <td class="right-align">
-                  {% gross order.get_total_shipping html=True %}
-                </td>
-              </tr>
               {% if order.discount_amount.gross %}
                 <tr>
                   <td>
@@ -448,104 +340,5 @@
       </div>
     </div>
   </div>
-  <div class="tab-content" id="payment-history">
-    {% if all_payments %}
-      <p class="print-show print-tabs">{% trans "Payments" context "Order detail tab" %}</p>
-      <div class="card">
-        <div class="data-table-container">
-          <table class="bordered highlight responsive data-table">
-            <thead>
-              <tr>
-                <th>
-                  {% trans "Transaction ID" context "Payment history table header" %}
-                </th>
-                <th>
-                  {% trans "Date" context "Payment history table header" %}
-                </th>
-                <th>
-                  {% trans "Payment status" context "Payment history table header" %}
-                </th>
-                <th>
-                  {% trans "Fraud status" context "Payment history table header" %}
-                </th>
-                <th>
-                  {% trans "Amount" context "Payment history table header" %}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for payment in all_payments %}
-                <tr>
-                  <td>
-                    {% blocktrans trimmed with payment_id=payment.id context "Payment item column data" %}
-                      #{{ payment_id }}
-                    {% endblocktrans %}
-                  </td>
-                  <td>
-                    {{ payment.created }}
-                  </td>
-                  <td>
-                    {% render_status payment.status payment.get_status_display %}
-                  </td>
-                  <td>
-                    {% render_status payment.fraud_status payment.get_fraud_status_display %}
-                  </td>
-                  <td>
-                    {{ payment.total|currencyfmt:payment.currency }}
-                  </td>
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    {% else %}
-      <p>
-        {% trans "No payments made for this order." context "Empty payment history table message" %}
-      </p>
-    {% endif %}
-  </div>
-  <div class="card tab-content" id="order-history">
-    <p class="print-show print-tabs">{% trans "History" context "Order detail tab" %}</p>
-    <div class="data-table-container">
-      <table class="bordered highlight responsive data-table">
-        <thead>
-          <tr>
-            <th>
-              {% trans "Date" context "Order history table header" %}
-            </th>
-            <th>
-              {% trans "Order status" context "Order history table header" %}
-            </th>
-            <th>
-              {% trans "User" context "Order history table header" %}
-            </th>
-            <th class="wide">
-              {% trans "Comment" context "Order history table header" %}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for event in order.history.all %}
-          <tr>
-            <td>
-              {{ event.date }}
-            </td>
-            <td>
-              {% render_status event.status event.get_status_display %}
-            </td>
-            <td>
-              {% if event.user %}
-                {{ event.user }}
-              {% endif %}
-            </td>
-            <td>
-              {{ event.comment|default:"" }}
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-  </div>
+  
 {% endblock %}
