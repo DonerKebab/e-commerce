@@ -33,7 +33,7 @@
       </li>
     {% endif %}
     <li>
-      <a class="btn-print" href="#">
+      <a class="btn-print" onclick="printOrder({{order.pk}})" href="#">
         {% trans "Print" context "Order detail action" %}
       </a>
     </li>
@@ -246,9 +246,28 @@
                   {% trans "Cancel this shipment" context "Shipment group table action" %}
                 </a>
               {% endif %} -->
-              {% if order.status == 'pending' %}
-               <a href="{% url 'lazada:order-ready-to-ship' order.pk %}" class="btn btn-flat">
+              {% if order.status == 'pending' and order.lazada_order_id %}
+               <a href="{% url 'lazada:lazada-order-ready-to-ship' order.pk %}" class="btn btn-flat">
                 Sẵn sàng giao hàng
+              </a>
+              {% endif %}
+              {% if order.status == 'pending' and order.lazada_order_id == '' %}
+               <a href="{% url 'dashboard:order-ready-to-ship' order.pk %}" class="btn btn-flat">
+                Sẵn sàng giao hàng
+              </a>
+              {% endif %}
+
+              {% if order.status == 'ready_to_ship' and order.lazada_order_id == '' %}
+               <a href="{% url 'dashboard:order-shipped' order.pk %}" class="btn btn-flat">
+                Đang giao hàng
+              </a>
+              {% endif %}
+              {% if order.status == 'shipped' and order.lazada_order_id == '' %}
+               <a href="{% url 'dashboard:order-returned' order.pk %}" class="btn btn-flat">
+                Hàng bị trả lại
+              </a>
+              <a href="{% url 'dashboard:order-delivered' order.pk %}" class="btn btn-flat">
+                Đã giao hàng
               </a>
               {% endif %}
             </div>
@@ -340,5 +359,17 @@
       </div>
     </div>
   </div>
+  <script>
+    
+    //Print button
+    function printOrder(orderId) {
+      $.ajax({
+        url: '/dashboard/orders/'+ orderId + '/print',
+        method: 'get',
+        success: () => {
+        }
+      });
+    }
+  </script>
   
 {% endblock %}

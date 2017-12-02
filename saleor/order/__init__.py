@@ -15,8 +15,8 @@ class OrderStatus:
     CHOICES = [
         (NEW, pgettext_lazy('order status', 'Chờ xác nhận')),
         (READY_TO_SHIP, pgettext_lazy('order status', 'Sẵn sàng giao hàng')),
+        (SHIPPED, pgettext_lazy('order status', 'Đang giao hàng')),
         (CANCELLED, pgettext_lazy('order status', 'Bị huỷ')),
-        (SHIPPED, pgettext_lazy('order status', 'Đã giao hàng')),
         (RETURNED, pgettext_lazy('order status', 'Bị trả lại')),
-        (DELIVERED, pgettext_lazy('order status', 'Đã chuyển hàng')),
+        (DELIVERED, pgettext_lazy('order status', 'Giao hàng thành công.')),
         ]

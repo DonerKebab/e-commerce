@@ -32,4 +32,16 @@ urlpatterns = [
     url(r'^(?P<order_pk>\d+)/shipment/(?P<group_pk>\d+)/ship/$',
         views.ship_delivery_group, name='ship-delivery-group'),
     url(r'^(?P<order_pk>\d+)/shipment/(?P<group_pk>\d+)/cancel/$',
-        views.cancel_delivery_group, name='cancel-delivery-group')]
+        views.cancel_delivery_group, name='cancel-delivery-group'),
+    
+    url(r'^(?P<pk>[0-9]+)/webready$',
+        views.order_ready_to_ship, name="order-ready-to-ship"),
+    url(r'^(?P<pk>[0-9]+)/order_delivered$',
+        views.order_delivered, name="order-delivered"),
+    url(r'^(?P<pk>[0-9]+)/order_returned$',
+        views.order_returned, name="order-returned"),
+    url(r'^(?P<pk>[0-9]+)/order_shipped$',
+        views.order_shipped, name="order-shipped"),
+    url(r'^(?P<pk>[0-9]+)/print$',
+        views.set_status_to_printed, name='set-status-printed')
+    ]

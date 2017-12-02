@@ -272,6 +272,12 @@ $(document).ready(() => {
 });
 
 //Print button
-$('.btn-print').click((e) => {
-  window.print();
-});
+function printOrder(orderId) {
+  $.ajax({
+    url: '/dashboard/orders/'+ orderId + '/print',
+    method: 'get',
+    success: () => {
+      window.print()
+    }
+  });
+}

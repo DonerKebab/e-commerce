@@ -16,7 +16,8 @@ ENDPOINT = {
     'GetOrderItems': 'GetOrderItems',
     'SetStatusToPackedByMarketplace': 'SetStatusToPackedByMarketplace',
     'SetStatusToReadyToShip': 'SetStatusToReadyToShip',
-    'GetDocument': 'GetDocument'
+    'GetDocument': 'GetDocument',
+    'GetOrder': 'GetOrder'
 }
 
 ORDER_STATUS = {
@@ -49,6 +50,24 @@ def get_orders(status):
       'UserID': settings.LAZADA_USER_ID,
       'Version': '1.0',
       'Status': status,
+      'Limit': 500,
+      'CreatedAfter': '2014-02-25T23:46:11+00:00'
+    }
+
+    parameters['Signature'] = generate_signature(parameters)
+
+    res = requests.get(settings.LAZADA_ENDPOINT_URI, parameters)
+    return json.loads(res.text)
+
+def get_orders_by_id(order_id):
+
+    parameters = {
+      'Action': ENDPOINT['GetOrder'],
+      'Format':'json',
+      'Timestamp': get_timestamp(),
+      'UserID': settings.LAZADA_USER_ID,
+      'Version': '1.0',
+      'OrderId': order_id,
       'Limit': 500,
       'CreatedAfter': '2014-02-25T23:46:11+00:00'
     }

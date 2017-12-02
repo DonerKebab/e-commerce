@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load prices_i18n %}
 {% load status %}
+{% load staticfiles %}
 
 <div class="data-table-container">
   <table class="bordered highlight responsive data-table">
@@ -20,6 +21,9 @@
         </th>
         <th>
           {% trans "Placed on" context "Orders table header" %}
+        </th>
+        <th>
+          {% trans "Is printed" context "Orders table header" %}
         </th>
         <th class="right-align">
           {% trans "Total" context "Orders table header" %}
@@ -44,6 +48,14 @@
           </td>
           <td>
             {{ order.created }}
+          </td>
+          <td>
+          {% if order.is_printed %}
+            <svg data-src="{% static "images/done.svg" %}" height="20px" width="20px" />
+
+          {% else %}
+            <svg data-src="{% static "images/clear.svg" %}" height="20px" width="20px" />
+          {% endif %}
           </td>
           <td class="right-align">
             {% gross order.get_total html=True %}
