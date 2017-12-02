@@ -163,3 +163,5 @@ def connect_order_with_user(request, token):
             'storefront message',
             'You\'ve successfully connected order with your account'))
     return redirect('order:details', token=order.token)
+
+

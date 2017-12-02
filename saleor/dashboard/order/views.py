@@ -9,6 +9,7 @@ from django.utils.translation import pgettext_lazy
 from django_prices.templatetags.prices_i18n import gross
 from payments import PaymentStatus
 from prices import Price
+from django.http import JsonResponse
 
 from ...core.utils import get_paginator_items
 from ...order import OrderStatus
@@ -350,3 +351,48 @@ def remove_order_voucher(request, order_pk):
     return TemplateResponse(request,
                             'dashboard/order/modal_order_remove_voucher.html',
                             ctx, status=status)
+
+
+def order_ready_to_ship(request, pk):
+
+    Order.objects.filter(pk=pk).update(status='ready_to_ship')
+
+    return redirect('dashboard:orders')
+
+def order_delivered(request, pk):
+
+    Order.objects.filter(pk=pk).update(status='delivered')
+
+    return redirect('dashboard:orders')
+
+def order_returned(request, pk):
+
+    Order.objects.filter(pk=pk).update(status='returned')
+
+    return redirect('dashboard:orders')
+
+def order_shipped(request, pk):
+
+    Order.objects.filter(pk=pk).update(status='shipped')
+
+    return redirect('dashboard:orders')
+
+def order_failed(request, pk):
+
+    Order.objects.filter(pk=pk).update(status='failed')
+
+    return redirect('dashboard:orders')
+
+def set_order_printed(request, pk):
+
+    Order.objects.filter(pk=pk).update(status='failed')
+
+    return redirect('dashboard:orders')
+
+def set_status_to_printed(request, pk):
+    Order.objects.filter(pk=pk).update(is_printed=True)
+
+    return JsonResponse({'msg': 'success'}, status=200)
+
+
+

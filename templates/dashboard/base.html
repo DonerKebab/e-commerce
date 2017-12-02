@@ -230,6 +230,10 @@
 
     <!-- Core Scripts - Include with every page -->
     <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.js"
+      integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+      crossorigin="anonymous"></script>
     {% render_bundle 'vendor' 'js' %}
     {% render_bundle 'dashboard' 'js' %}
     <script src="{% static "versatileimagefield/js/versatileimagefield.js" %}"></script>

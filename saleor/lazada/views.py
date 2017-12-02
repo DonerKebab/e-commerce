@@ -5,11 +5,12 @@ from django.http import JsonResponse
 from django.template.response import TemplateResponse
 from django.core.urlresolvers import reverse
 from decimal import Decimal
+from django.db.models import Q
 
 from ..order.models import Order, DeliveryGroup, OrderedItem
 from ..userprofile.models import Address, User
 from .utils import get_order_items, set_order_ready_to_ship, get_pending_orders, get_canceled_orders, get_ready_orders,\
-get_delivered_orders, get_returned_orders, get_shipped_orders, get_failed_orders
+get_delivered_orders, get_returned_orders, get_shipped_orders, get_failed_orders, get_orders_by_id
 
 
 
@@ -38,11 +39,11 @@ def sync_orders_from_lazada(orders):
             user.addresses.add(billing_address)
         
         # create order
-        order_obj = Order.objects.filter(created=order['CreatedAt'] + '.069225+00', user=user).first()
+        order_obj = Order.objects.filter(lazada_order_id=order['OrderId'], user=user).first()
         if order_obj:
             if order_obj.status != order['Statuses'][0]:
                 order_obj.status = order['Statuses'][0]
-                order_obj.save()
+                bộ
                 
         else:
             is_order_exists = False
@@ -69,6 +70,15 @@ def sync_orders_from_lazada(orders):
                 order_item.save()
     return redirect('dashboard:orders')
 
+
+# def syncr_orders(request):
+
+#     orders_list = Order.objects.filter(Q(status='ready_to_ship') | Q(status='pending') | Q(status='shipped')).all()
+#     for order in orders_list:
+#         res = get_orders_by_id(order.lazada_order_id)['SuccessResponse']['Body']['Orders'][0ơ
+#         if res['Statuses'][0] != order.status:
+#             order.status = res['Statuses'][0]
+#             order.save()
 
 def order_ready_to_ship(request, pk):
 

@@ -6,9 +6,9 @@ from ...order import OrderStatus
 register = Library()
 
 
-ERRORS = {PaymentStatus.ERROR, PaymentStatus.REJECTED}
+ERRORS = {PaymentStatus.ERROR, PaymentStatus.REJECTED, OrderStatus.RETURNED, OrderStatus.FAILED}
 SUCCESSES = {
-    OrderStatus.SHIPPED,
+    OrderStatus.DELIVERED,
     PaymentStatus.CONFIRMED, PaymentStatus.REFUNDED}
 
 

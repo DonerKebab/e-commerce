@@ -105,6 +105,8 @@ class Order(models.Model, ItemSet, index.Indexed):
         max_length=255, default='', blank=True)
 
     sale_chanel = models.ForeignKey(SaleChanel, max_length=255, default='', blank=True, null=True)
+    is_printed = models.BooleanField(
+        pgettext_lazy('Order field', 'is printed'), default=False)
 
     objects = OrderManager()
 

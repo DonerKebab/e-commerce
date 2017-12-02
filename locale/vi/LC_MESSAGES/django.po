@@ -2281,12 +2281,12 @@ msgstr ""
 #: templates/dashboard/customer/detail.html:54
 msgctxt "Customer orders table header"
 msgid "Placed on"
-msgstr ""
+msgstr "Ngày đặt hàng"
 
 #: templates/dashboard/customer/detail.html:57
 msgctxt "Customer orders table header"
 msgid "Order status"
-msgstr ""
+msgstr "Trạng thái"
 
 #: templates/dashboard/customer/detail.html:60
 msgctxt "Customer orders table header"
@@ -2511,7 +2511,7 @@ msgstr ""
 #: templates/dashboard/includes/_orders_table.html:13
 msgctxt "Orders table header"
 msgid "Order status"
-msgstr ""
+msgstr "Trạng thái"
 
 #: templates/dashboard/includes/_orders_table.html:16
 msgctxt "Orders table header"
@@ -2521,7 +2521,7 @@ msgstr ""
 #: templates/dashboard/includes/_orders_table.html:19
 msgctxt "Orders table header"
 msgid "Customer"
-msgstr ""
+msgstr "Khách hàng"
 
 #: templates/dashboard/includes/_orders_table.html:22
 msgctxt "Orders table header"
@@ -2532,6 +2532,11 @@ msgstr ""
 msgctxt "Orders table header"
 msgid "Total"
 msgstr "Tổng"
+
+#: templates/dashboard/includes/_orders_table.html:25
+msgctxt "Orders table header"
+msgid "Is printed"
+msgstr "In"
 
 #: templates/dashboard/includes/_orders_table.html:41
 #: templates/dashboard/order/detail.html:106
