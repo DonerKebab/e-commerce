@@ -172,6 +172,7 @@ INSTALLED_APPS = [
     'saleor.site',
     'saleor.data_feeds',
     'saleor.bid',
+    'saleor.lazada',
 
     # External apps
     'versatileimagefield',
@@ -479,3 +480,17 @@ CKEDITOR_CONFIGS = {
 LAZADA_ENDPOINT_URI = 'https://api.sellercenter.lazada.vn/'
 LAZADA_USER_ID = os.environ.get('LAZADA_USER_ID')
 LAZADA_API_KEY = os.environ.get('LAZADA_API_KEY')
+
+from celery.schedules import crontab
+CELERY_BROKER_URL = os.environ.get('CELERY_REDIS_URL')
+CELERY_RESULT_BACKEND = os.environ.get('CELERY_REDIS_URL')
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Ho_Chi_Minh'
+CELERY_BEAT_SCHEDULE = {
+    'task_sync_lazada_orders': {
+        'task': 'saleor.lazada.tasks.task_sync_lazada_orders',
+        'schedule': crontab(minute='*/10')
+    }
+}
