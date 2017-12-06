@@ -10,6 +10,5 @@ urlpatterns = [
     url(r'^sync_all_lazada_orders/$',
         views.get_all_lazada_orders, name="sync-all-lazada-orders"),
     url(r'^(?P<pk>[0-9]+)/lazadaready$',
-        views.order_ready_to_ship, name="lazada-order-ready-to-ship")
-    
+        views.order_ready_to_ship, name="lazada-order-ready-to-ship"),
     ]

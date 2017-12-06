@@ -81,3 +81,4 @@ urllib3==1.22             # via elasticsearch, requests
 uwsgi==2.0.15
 xmltodict==0.11.0         # via django-payments
 django-ckeditor==5.3.0
+celery==4.0
