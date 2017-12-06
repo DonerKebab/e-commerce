@@ -6,7 +6,6 @@ from django.template.response import TemplateResponse
 from django.core.urlresolvers import reverse
 from decimal import Decimal
 from django.db.models import Q
-from django.contrib import messages
 
 from ..order.models import Order, DeliveryGroup, OrderedItem
 from ..userprofile.models import Address, User
@@ -15,16 +14,6 @@ get_delivered_orders, get_returned_orders, get_shipped_orders, get_failed_orders
 from .tasks import task_sync_lazada_orders
 
 
-
-
-# def syncr_orders(request):
-
-#     orders_list = Order.objects.filter(Q(status='ready_to_ship') | Q(status='pending') | Q(status='shipped')).all()
-#     for order in orders_list:
-#         res = get_orders_by_id(order.lazada_order_id)['SuccessResponse']['Body']['Orders'][0ơ
-#         if res['Statuses'][0] != order.status:
-#             order.status = res['Statuses'][0]
-#             order.save()
 
 
 def order_ready_to_ship(request, pk):
@@ -39,7 +28,6 @@ def order_ready_to_ship(request, pk):
 def sync_orders_status(request):
     task_sync_lazada_orders.delay()
     if request:
-        messages.success(request, 'Đang đồng bộ đơn hàng, vui lòng trở lại sau vài phút.')
         return redirect('dashboard:orders')
 
 def get_all_lazada_orders(request):
