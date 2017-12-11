@@ -116,7 +116,10 @@ def set_order_packed_by_marketplace(ordered_item_id):
     }
     parameters['Signature'] = generate_signature(parameters)
     res = requests.get(settings.LAZADA_ENDPOINT_URI, parameters)
-    res = json.loads(res.text)['SuccessResponse']['Body']['OrderItems'][0]
+    try:
+        res = json.loads(res.text)['SuccessResponse']['Body']['OrderItems'][0]
+    except Exception as e:
+        res = False
     return res
 
 def set_order_ready_to_ship(order_id):
@@ -127,10 +130,12 @@ def set_order_ready_to_ship(order_id):
 
     order_items = OrderedItem.objects.filter(delivery_group_id=dg.id).all()
 
-    tracking_numers = []
+    tracking_numbers = []
     # send packed_by_marketplace to get tracking numbers
     for item in order_items:
-        tracking_numers.append(set_order_packed_by_marketplace(item.lazada_order_item_id))
+        tracking_number = set_order_packed_by_marketplace(item.lazada_order_item_id)
+        if tracking_number:
+            tracking_numbers.append(tracking_number)
 
     # update ordered item: set tracking number
     for order_item in order_items:
@@ -156,7 +161,6 @@ def set_order_ready_to_ship(order_id):
         }
         parameters['Signature'] = generate_signature(parameters)
         res = requests.get(settings.LAZADA_ENDPOINT_URI, parameters)
-        print(res.text)
 
 
 # def get_documents()

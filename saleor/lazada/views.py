@@ -80,7 +80,7 @@ def order_ready_to_ship(request, pk):
 
 def sync_orders_status(request):
     
-    orders = get_pending_orders() + get_ready_orders() + get_shipped_orders()
+    orders = get_pending_orders() + get_ready_orders() + get_shipped_orders() + get_canceled_orders()
 
     return sync_orders_from_lazada(orders)
 
