@@ -137,7 +137,10 @@ def set_order_packed_by_marketplace(ordered_item_id):
     }
     parameters['Signature'] = generate_signature(parameters)
     res = requests.get(settings.LAZADA_ENDPOINT_URI, parameters)
-    res = json.loads(res.text)['SuccessResponse']['Body']['OrderItems'][0]
+    try:
+        res = json.loads(res.text)['SuccessResponse']['Body']['OrderItems'][0]
+    except Exception as e:
+        res = False
     return res
 
 def set_order_ready_to_ship(order_id):
@@ -148,36 +151,39 @@ def set_order_ready_to_ship(order_id):
 
     order_items = OrderedItem.objects.filter(delivery_group_id=dg.id).all()
 
-    tracking_numers = []
+    tracking_numbers = []
     # send packed_by_marketplace to get tracking numbers
     for item in order_items:
-        tracking_numers.append(set_order_packed_by_marketplace(item.lazada_order_item_id))
+        tracking_number = set_order_packed_by_marketplace(item.lazada_order_item_id)
+        if tracking_number:
+            tracking_numbers.append()
 
     # update ordered item: set tracking number
     for order_item in order_items:
-        for number in tracking_numers:
+        for number in tracking_numbers:
             if order_item.lazada_order_item_id == str(number['OrderItemId']):
                 order_item.lazada_tracking_number = number['TrackingNumber']
                 order_item.save()
                 break
 
-    for order_item in order_items:
-        # set ready_to_ship
-        parameters = {
-            'Action': ENDPOINT['SetStatusToReadyToShip'],
-            'Format':'json',
-            'Timestamp': get_timestamp(),
-            'UserID': settings.LAZADA_USER_ID,
-            'Version': '1.0',
-            'OrderId': int(order_id),
-            'DeliveryType': 'dropship',
-            'OrderItemIds': json.dumps([order_item.lazada_order_item_id]),
-            'ShippingProvider': 'Hanoi%20Post%20-%20DO',
-            'TrackingNumber': order_item.lazada_tracking_number
-        }
-        parameters['Signature'] = generate_signature(parameters)
-        res = requests.get(settings.LAZADA_ENDPOINT_URI, parameters)
-        print(res.text)
+    if tracking_numbers:
+
+        for order_item in order_items:
+            # set ready_to_ship
+            parameters = {
+                'Action': ENDPOINT['SetStatusToReadyToShip'],
+                'Format':'json',
+                'Timestamp': get_timestamp(),
+                'UserID': settings.LAZADA_USER_ID,
+                'Version': '1.0',
+                'OrderId': int(order_id),
+                'DeliveryType': 'dropship',
+                'OrderItemIds': json.dumps([order_item.lazada_order_item_id]),
+                'ShippingProvider': 'Hanoi%20Post%20-%20DO',
+                'TrackingNumber': order_item.lazada_tracking_number
+            }
+            parameters['Signature'] = generate_signature(parameters)
+            res = requests.get(settings.LAZADA_ENDPOINT_URI, parameters)
 
 def sync_orders_from_lazada(orders):
 
@@ -237,7 +243,7 @@ def sync_orders_from_lazada(orders):
 
 def  util_sync_orders_status(request):
     
-    orders = get_pending_orders() + get_ready_orders() + get_shipped_orders()
+    orders = get_pending_orders() + get_ready_orders() + get_shipped_orders() + get_canceled_orders()
 
     return sync_orders_from_lazada(orders)
 # def get_documents()
