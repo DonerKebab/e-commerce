@@ -156,7 +156,7 @@ def set_order_ready_to_ship(order_id):
     for item in order_items:
         tracking_number = set_order_packed_by_marketplace(item.lazada_order_item_id)
         if tracking_number:
-            tracking_numbers.append()
+            tracking_numbers.append(tracking_number)
 
     # update ordered item: set tracking number
     for order_item in order_items:
