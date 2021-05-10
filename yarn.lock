@@ -2489,8 +2489,8 @@ home-or-tmp@^2.0.0:
     os-tmpdir "^1.0.1"
 
 hosted-git-info@^2.1.4:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.5.0.tgz#6d60e34b3abbc8313062c3b798ef8d901a07af3c"
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
 
 html-comment-regex@^1.1.0:
   version "1.1.1"
@@ -3760,9 +3760,9 @@ pngjs@^3.0.0, pngjs@^3.2.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-3.3.0.tgz#1f5730c189c94933b81beda2ab2f8e2855263a8f"
 
-popper.js@1.11.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.11.0.tgz#0103f23ac0c9221d944e7f25e3aba4c2f73987de"
+popper.js@^1.12.5:
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
 
 postcss-calc@^5.2.0:
   version "5.3.1"
