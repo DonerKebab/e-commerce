@@ -3681,8 +3681,8 @@ path-is-inside@^1.0.1:
   resolved "https://registry.yarnpkg.com/path-is-inside/-/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
 
 path-parse@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.5.tgz#3c1adf871ea9cd6c9431b6ea2bd74a0ff055c4c1"
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
 
 path-to-regexp@0.1.7:
   version "0.1.7"
@@ -3760,9 +3760,9 @@ pngjs@^3.0.0, pngjs@^3.2.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-3.3.0.tgz#1f5730c189c94933b81beda2ab2f8e2855263a8f"
 
-popper.js@1.11.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.11.0.tgz#0103f23ac0c9221d944e7f25e3aba4c2f73987de"
+popper.js@^1.12.5:
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
 
 postcss-calc@^5.2.0:
   version "5.3.1"
